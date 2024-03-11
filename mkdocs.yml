@@ -78,8 +78,8 @@ plugins:
       categories: true
   - tags:
       tags_file: tags.md
-  - minify:
-      minify_html: true
+  # - minify:
+  #     minify_html: true
   - search:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
 # plugins:
