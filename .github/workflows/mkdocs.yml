@@ -1,83 +1,29 @@
-name: documentation
+name: ci
 on:
   push:
     branches:
       - master
-      - mkdocs
-
-env:
-  PYTHON_VERSION: 3.x
-
+      - main
 permissions:
   contents: write
-  id-token: write
-  pages: write
-
 jobs:
-  documentation:
-    name: Build documentation
+  deploy:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - uses: actions/setup-python@v5
         with:
-          fetch-depth: 0
-          sparse-checkout: |
-            docs
-            includes
-            material/overrides
-            src/templates/partials/languages
-
-      - name: Set up Python runtime
-        uses: actions/setup-python@v5
+          python-version: 3.x
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+      - uses: actions/cache@v4
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: pip
-          cache-dependency-path: |
-            pyproject.toml
-            requirements.txt
-
-      - name: Set up build cache
-        uses: actions/cache/restore@v4
-        with:
-          key: mkdocs-material-${{ hashfiles('.cache/**') }}
+          key: mkdocs-material-${{ env.cache_id }}
           path: .cache
           restore-keys: |
             mkdocs-material-
-
-      - name: Install dependencies
-        run: sudo apt-get install pngquant
-
-      - name: Install Python dependencies
-        run: |
-          pip install mkdocs-material
-          pip install mkdocs-material[recommended,git,imaging]
-
-      - name: Build documentation
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
-        run: |
-          mkdocs build --clean
-          mkdocs --version
-
-      - name: Adjust permissions
-        run: |
-          chmod -c -R +rX site/ | while read line; do
-            echo "::warning title=Invalid file permissions automatically fixed::$line"
-          done
-
-      - name: Upload to GitHub Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
-
-      - name: Save build cache
-        uses: actions/cache/save@v4
-        with:
-          key: mkdocs-material-${{ hashfiles('.cache/**') }}
-          path: .cache
+      - run: pip install mkdocs-material
+      - run: mkdocs gh-deploy --force
