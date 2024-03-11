@@ -1,6 +1,5 @@
 ---
 layout: post
-template: blog_post.html
 title: "Setup postgres debugger env with docker"
 subtitle: 'debug pl/sql with docker and dbeaver'
 author: "Ray"

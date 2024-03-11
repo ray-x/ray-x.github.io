@@ -1,5 +1,4 @@
 ---
-template: blog_post.html
 layout: post
 title: "asyncio python"
 alias: asyncio
@@ -39,6 +38,7 @@ date: 2023-12-20
       ```
   - python 3.7 Task
   - python 3.11 TaskGroup
+  <!-- more -->
 - Asynchronous Programming
   - event loop
 

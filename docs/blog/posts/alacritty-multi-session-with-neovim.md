@@ -1,6 +1,5 @@
 ---
 layout: post
-template: blog_post.html
 title: "Alacritty Multi session with neovim"
 subtitle: ["tmux or nvim", "nvim terminal"]
 author: "Ray"

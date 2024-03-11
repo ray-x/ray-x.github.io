@@ -1,12 +1,10 @@
 ---
 layout: post
-template: blog_post.html
 title: "Asynchronous Javascript"
 author: "Ray"
-header-style: text
-template: blog_post.html
 tags:
-  - Docker
+  - javascript
+  - promise
 date: 2024-02-20
 ---
 
@@ -16,6 +14,7 @@ date: 2024-02-20
     allows you to associate handlers with an asynchronous action's eventual success value or failure reason. This lets
     asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the
     asynchronous method returns a /promise/ to supply the value at some point in the future.
+<!-- more -->
     ```javascript
     let promise = new Promise(function (resolve, reject) {
       resolve("done");

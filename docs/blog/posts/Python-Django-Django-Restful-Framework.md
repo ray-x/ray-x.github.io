@@ -1,5 +1,4 @@
 ---
-template: blog_post.html
 layout: post
 title: "Python Django Restful Framework"
 alias: DRF
