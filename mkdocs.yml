@@ -1,0 +1,179 @@
+site_name: Ray-X
+site_author: Ray-X
+copyright: "Copyright &copy; 2019 - 2024 RayX"
+site_url: https://ray-x.github.io
+site_description: >-
+  关于软件、Geek | Ray，Web & Mobile Lover，Software Engineer | 这里是 @Ray睿 类喵星人的个人博客。专注求索，创新
+repo_url: https://github.com/ray-x
+repo_name: ray-x.github.io
+theme:
+  name: material
+  custom_dir: overrides
+  icon:
+    tag:
+      css: simple/css3
+      html: simple/html5
+      js: simple/javascript
+      python: simple/python
+    logo: material/home
+
+  palette:
+    # - media: "(prefers-color-scheme)"
+    #   toggle:
+    #     icon: material/link
+    #     name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    # - media: "(prefers-color-scheme: dark)"
+    #   scheme: slate
+    #   primary: black
+    #   accent: indigo
+    #   toggle:
+    #     icon: material/toggle-switch-off
+    #     name: Switch to system preference
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
+
+  watch:
+    - overrides
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+      # - content.code.select
+      # - content.footnote.tooltips
+      # - content.tabs.link
+    - content.tooltips
+      # - header.autohide
+      # - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+      # - navigation.instant
+      # - navigation.instant.prefetch
+      # - navigation.instant.progress
+      # - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+      - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+      - toc.integrate
+
+plugins:
+  - tags
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - minify:
+      minify_html: true
+  - blog:
+      categories: true
+
+hooks:
+  - hooks/archive.py
+  - hooks/shortcodes.py
+  - hooks/translations.py
+
+extra:
+  status:
+    new: Recently added
+    deprecated: Deprecated
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/ray-x
+    - icon: fontawesome/brands/x-twitter
+      link: https://twitter.com/xb_I_dx
+    - icon: fontawesome/brands/linkedin-in
+      link: https://linkedin.com/in/ray-x
+  tags:
+    CSS: css
+    HTML: html
+    JavaScript: js
+  blog:
+    dir: blog
+    list_length: 24
+    extended_preview: true
+    author: ray-x
+    # author_image: https://user-images.githubusercontent.com/1681295/279851376-68b03a00-464e-4b6f-a348-03ce9e7fcf53.jpg
+# extra_css:
+#   - "stylesheets/extra.css"
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      title: On this page
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - smarty
+  - meta
+  - codehilite
+  - pymdownx.critic
+
+
+nav:
+  - Home: index.md
+  - Blog:
+    - blog/index.md
+    - latest:
+      - blog/posts/Python-AsynchronousIO.md
+      - blog/posts/Python-Django-Django-Restful-Framework.md

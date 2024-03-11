@@ -1,0 +1,1743 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="关于软件、Geek | Ray，Web & Mobile Lover，Software Engineer | 这里是 @Ray睿 类喵星人的个人博客。专注求索，创新">
+      
+      
+        <meta name="author" content="Ray">
+      
+      
+        <link rel="canonical" href="https://rayx.me/blog/2023/12/19/template-and-form-of-drf/">
+      
+      
+        <link rel="prev" href="../django/">
+      
+      
+        <link rel="next" href="../session-middleware-of-drf/">
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+    
+    
+      
+        <title>Template and Form of DRF - Ray-X</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.7e359304.min.css">
+      
+      
+
+
+  
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+  
+  <style>.md-tag.md-tag--css{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/></svg>');}.md-tag.md-tag--html{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>');}.md-tag.md-tag--js{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>');}.md-tag.md-tag--python{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.25.18.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg>');}</style>
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Ray-X" class="md-header__button md-logo" aria-label="Ray-X" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ray-X
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Template and Form of DRF
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ray-x" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ray-x
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Ray-X" class="md-nav__button md-logo" aria-label="Ray-X" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5Z"/></svg>
+
+    </a>
+    Ray-X
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ray-x" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ray-x
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Whats new
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    latest
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            latest
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20/asyncio-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    asyncio python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-django-restful-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Django Restful Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2023/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2020/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2020
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#django-rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Django REST API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Django REST API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#udemy" class="md-nav__link">
+    <span class="md-ellipsis">
+      | Udemy]]
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
+                        <time datetime="2023-12-19 00:00:00" class="md-ellipsis">December 19, 2023</time>
+                      </div>
+                    </li>
+                    
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              13 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+  
+
+<nav class="md-tags" >
+  
+    
+    
+      
+      
+    
+    
+      <span class="md-tag md-tag-icon">django</span>
+    
+  
+    
+    
+      
+      
+    
+    
+      <span class="md-tag md-tag-icon">backend</span>
+    
+  
+    
+    
+      
+      
+    
+    
+      <span class="md-tag md-tag-icon">python</span>
+    
+  
+    
+    
+      
+      
+    
+    
+      <span class="md-tag md-tag-icon">DRF</span>
+    
+  
+</nav>
+
+
+  
+  
+
+
+<h1 id="reference">reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h1>
+<h2 id="django-rest-api">Django REST API<a class="headerlink" href="#django-rest-api" title="Permanent link">&para;</a></h2>
+<h3 id="udemy">| Udemy]]<a class="headerlink" href="#udemy" title="Permanent link">&para;</a></h3>
+<h1 id="kickstart">KickStart<a class="headerlink" href="#kickstart" title="Permanent link">&para;</a></h1>
+<h2 id="managepy-command-line">manage.py command line<a class="headerlink" href="#managepy-command-line" title="Permanent link">&para;</a></h2>
+<h3 id="runserver">runserver<a class="headerlink" href="#runserver" title="Permanent link">&para;</a></h3>
+<h3 id="makemigrations">makemigrations<a class="headerlink" href="#makemigrations" title="Permanent link">&para;</a></h3>
+<ol>
+<li>create a new migration plan</li>
+</ol>
+<h3 id="migrate">migrate<a class="headerlink" href="#migrate" title="Permanent link">&para;</a></h3>
+<h3 id="createsuperuser">createsuperuser<a class="headerlink" href="#createsuperuser" title="Permanent link">&para;</a></h3>
+<h3 id="startapp">startapp<a class="headerlink" href="#startapp" title="Permanent link">&para;</a></h3>
+<ol>
+<li>create a new app/rest API</li>
+</ol>
+<h3 id="shell">shell<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h3>
+<h3 id="help">help<a class="headerlink" href="#help" title="Permanent link">&para;</a></h3>
+<h2 id="admin-url-for-admin-user">/admin URL for admin user<a class="headerlink" href="#admin-url-for-admin-user" title="Permanent link">&para;</a></h2>
+<h2 id="a-django-app">A django APP<a class="headerlink" href="#a-django-app" title="Permanent link">&para;</a></h2>
+<h3 id="an-app-in-a-django-project-is-a-python-package-that-does-a-particular-job-a-django-project-contains-one-or-more-apps-and-each-of-them-handles-a-particular-task-for-example-a-django-blog-website-will-have-a-list-of-posts-user-authentication-user-profiles-etc-the-best-practice-is-to-create-different-apps-for-each-one-of-them">An app in a Django project is a Python package that does a particular job. A Django project contains one or more apps and each of them handles a particular task. For example, a Django blog website will have a list of posts, user authentication, user profiles, etc. The best practice is to create different apps for each one of them.<a class="headerlink" href="#an-app-in-a-django-project-is-a-python-package-that-does-a-particular-job-a-django-project-contains-one-or-more-apps-and-each-of-them-handles-a-particular-task-for-example-a-django-blog-website-will-have-a-list-of-posts-user-authentication-user-profiles-etc-the-best-practice-is-to-create-different-apps-for-each-one-of-them" title="Permanent link">&para;</a></h3>
+<h3 id="apps-are-meant-to-be-portable-and-can-be-shared-between-different-projects-for-example-a-django-e-commerce-website-and-a-django-blog-website-both-will-have-user-authentication-you-can-make-a-single-app-for-user-authentication-and-share-it-between-different-django-projects">Apps are meant to be portable and can be shared between different projects. For example, a Django e-commerce website and a Django blog website both will have user authentication. You can make a single app for user authentication and share it between different Django projects.<a class="headerlink" href="#apps-are-meant-to-be-portable-and-can-be-shared-between-different-projects-for-example-a-django-e-commerce-website-and-a-django-blog-website-both-will-have-user-authentication-you-can-make-a-single-app-for-user-authentication-and-share-it-between-different-django-projects" title="Permanent link">&para;</a></h3>
+<h3 id="create-a-new-app">create a new APP<a class="headerlink" href="#create-a-new-app" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>manage.py<span class="w"> </span>startapp<span class="w"> </span><span class="o">[</span>app<span class="w"> </span>name<span class="o">]</span>
+</code></pre></div>
+<h2 id="project-structure">Project structure<a class="headerlink" href="#project-structure" title="Permanent link">&para;</a></h2>
+<h3 id="project-structure_1"><a href="https://miro.medium.com/max/700/1*aICZBUzrgLgc5GoWuiFHcw.jpeg">project structure</a><a class="headerlink" href="#project-structure_1" title="Permanent link">&para;</a></h3>
+<h3 id="managepy-file-provides-a-command-line-utility-for-a-django-project">`manage.py~ file provides a command-line utility for a Django project.<a class="headerlink" href="#managepy-file-provides-a-command-line-utility-for-a-django-project" title="Permanent link">&para;</a></h3>
+<p>*** <sub>asgi</sub> stands for <em>Asynchronous Server Gateway Interface</em> and ~wsgi` stands for *Web Server Gateway Interface.*</p>
+<ol>
+<li>
+<p>After your development process is completed, you will move to
+    production and hosting. For hosting you will
+    use ~asgi~ or ~wsgi~ compatible servers. According to the type
+    of server you use, you have to import middleware accordingly.</p>
+</li>
+<li>
+<p>~asgi.py~ enables ASGI compatible servers and ~wsgi.py~ enables
+    WSGI compatible servers to serve your Django web app.</p>
+</li>
+</ol>
+<h3 id="settingspy">settings.py<a class="headerlink" href="#settingspy" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>This is the main configuration file for a Django project. This is
+    the main settings file and here you will configure all the apps and
+    middleware for your project.</p>
+</li>
+<li>
+<p>This file also handles the database settings. By default Django uses
+    sqlite3. But if you use a different database, which you will most
+    probably do, you will configure it in ~settings.py~.</p>
+</li>
+<li>
+<p>~settings.py~ also handles templates, static files, and media
+    files related settings.</p>
+</li>
+</ol>
+<h3 id="urlspy">urls.py<a class="headerlink" href="#urlspy" title="Permanent link">&para;</a></h3>
+<ol>
+<li>URLs are different endpoints of your website. ~urls.py~ contains
+    the URL configurations for your website. By
+    default, ~urls.py~ comes with the URL pattern for the admin panel.
+    You will create other endpoints for your web app in this file.</li>
+</ol>
+<h3 id="inside-your-app">Inside your APP<a class="headerlink" href="#inside-your-app" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>admin.py</p>
+<ol>
+<li>
+<p>This file is used to register the models in your app in the
+    Django administration. You will use this file to display the
+    models of your app in the admin panel.</p>
+</li>
+<li>
+<p>e.g. register article</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Article</span>
+
+<span class="c1"># Register article models here.</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Article</span><span class="p">)</span>
+</code></pre></div>
+</li>
+</ol>
+</li>
+<li>
+<p>app.py</p>
+<ol>
+<li>It is a common configuration file for all Django apps. You can
+    configure the attributes for your app using this file. However,
+    the default configuration is sufficient for most cases. So,
+    adding app configuration is a rare case.</li>
+</ol>
+</li>
+<li>
+<p>~migrations~ folder</p>
+<ol>
+<li>Once you start making changes in your database,
+    the ~migrations~ folder will be populated with the records for
+    all those migrations.</li>
+</ol>
+</li>
+<li>
+<p>models.py</p>
+</li>
+<li>
+<p>You create your models in this
+    file. <a href="https://docs.djangoproject.com/en/3.2/topics/db/models/">Models</a> define
+    the database structure of your app. In ~models.py~ you basically
+    create database tables for your app with proper relationships using
+    Python classes.</p>
+</li>
+<li>
+<p>~models.py~ is one of the most important files in your app. Django
+    follows the MVT (Model-View-Template) design architecture. The 'M'
+    represents models. So, models are one of the basic components of a
+    Django app.</p>
+</li>
+<li>
+<p>views.py</p>
+<ol>
+<li>
+<p>is another important
+    file. <a href="https://docs.djangoproject.com/en/3.2/topics/http/views/">Views</a> are
+    the 'V' of MVT. Views provide an interface through which users
+    interact with a Django website. It connects models and templates
+    together.</p>
+</li>
+<li>
+<p>In this file, you write the business logic for your app. A view
+    can be either function-based or class-based. You decide if you
+    want to write your views using functions or classes.</p>
+</li>
+<li>
+<p>You can learn more about the MVT architecture from this article:</p>
+</li>
+<li>
+<p><a href="https://python.plainenglish.io/the-mvt-design-pattern-of-django-8fd47c61f582">The MVT Design Pattern of
+    Django</a></p>
+</li>
+</ol>
+</li>
+<li>
+<p>tests.py</p>
+<ol>
+<li>is where you write test codes for your app. It is used to test
+    the overall working of a Django app.</li>
+</ol>
+</li>
+</ol>
+<h3 id="other-folderfiles">Other folder/files<a class="headerlink" href="#other-folderfiles" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Templates</p>
+<ol>
+<li>
+<p>django <strong>MVT</strong> *T*emplate</p>
+</li>
+<li>
+<p>each app can have own template and the search sequence is
+    defined same as how different app is loaded</p>
+</li>
+</ol>
+</li>
+<li>
+<p>static</p>
+<ol>
+<li>
+<p>css, js, images, json..</p>
+</li>
+<li>
+<p><code>{% raw %}{% load static %}{% endraw %}</code> to load static files 👍</p>
+</li>
+<li>
+<p><code>{% raw %}{% static  'css/bootstrap.css' %}{% endraw %}</code> to refer to those files</p>
+</li>
+</ol>
+</li>
+<li>
+<p>urls.py in app</p>
+<ol>
+<li>if your application is complex, use a dedicatd url.py</li>
+</ol>
+</li>
+<li>
+<p>forms.py</p>
+<ol>
+<li>If your website expects to receive user inputs you need to
+    use <a href="https://docs.djangoproject.com/en/3.2/topics/forms/">forms</a>.
+    To work with forms in an app you need to create the <code>forms.py</code>
+    file in that app. Here you will write the codes to handle forms.</li>
+</ol>
+</li>
+</ol>
+<h2 id="request-and-response-request-response-42">Request and response <a href="https://docs.djangoproject.com/en/4.2/ref/request-response/">Request &amp; Response 4.2</a><a class="headerlink" href="#request-and-response-request-response-42" title="Permanent link">&para;</a></h2>
+<h3 id="requests">Requests<a class="headerlink" href="#requests" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>method, GET, POST (used for form submit)， META</p>
+</li>
+<li>
+<p>Query parameters <code>/query/?id=123</code> #card</p>
+<ol>
+<li>
+<p>request.Get.get('id')</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;id&quot;</span> <span class="na">value </span><span class="o">=</span> <span class="s">&quot;{{search_data}}&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>search<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="reponse">Reponse<a class="headerlink" href="#reponse" title="Permanent link">&para;</a></h3>
+<ol>
+<li>HttpResponse; render; redirect</li>
+</ol>
+<h1 id="models">Models<a class="headerlink" href="#models" title="Permanent link">&para;</a></h1>
+<h2 id="default-and-autofield">Default and AutoField<a class="headerlink" href="#default-and-autofield" title="Permanent link">&para;</a></h2>
+<h3 id="bigautofield64bit-and-autofield">BigAutoField(64bit) and AutoField<a class="headerlink" href="#bigautofield64bit-and-autofield" title="Permanent link">&para;</a></h3>
+<h3 id="apppy-set-default-auto-field">app.py set default auto field<a class="headerlink" href="#apppy-set-default-auto-field" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">default_auto_field</span> <span class="o">=</span> <span class="s2">&quot;django.db.models.BigAutoField&quot;</span>
+</code></pre></div>
+<ol>
+<li>if default<sub>autofield</sub> present, each table will have <code>id</code> and you do
+    not need to define aut-inc auto field</li>
+</ol>
+<h2 id="foreignkey-and-auto-join">ForeignKey and auto join<a class="headerlink" href="#foreignkey-and-auto-join" title="Permanent link">&para;</a></h2>
+<h3 id="define-a-foreigh-key-relationship-card">define a foreigh key relationship #card<a class="headerlink" href="#define-a-foreigh-key-relationship-card" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">depart</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
+  <span class="s2">&quot;Department&quot;</span><span class="p">,</span>
+  <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span>
+<span class="n">xx</span><span class="p">)</span>
+<span class="c1"># table &quot;Department&quot;, to_field=&#39;id&#39;</span>
+<span class="c1"># if &#39;id&#39; is default (auto_field) to_field can be ignore</span>
+</code></pre></div>
+<h1 id="card">card<a class="headerlink" href="#card" title="Permanent link">&para;</a></h1>
+<ol>
+<li>
+<p><code>django</code> will append <code>id</code> and create <code>depart_id</code> automatically from
+    <code>depart</code> for foreign key #magic</p>
+</li>
+<li>
+<p><code>on_delete</code> should be specified. Normally <code>CASCADE</code>, can also be
+    <code>SET_NULL</code> if it is nullable</p>
+</li>
+</ol>
+<h3 id="autojoin">AutoJoin<a class="headerlink" href="#autojoin" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Instead of join two table to get info from 2<sup>nd</sup> table like this</p>
+<div class="highlight"><pre><span></span><code><span class="n">user</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="n">user_depart</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Department</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">depart_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</code></pre></div>
+<p>Django know how two table are associated and We can dereference
+department info with <code>depart</code> field directly without
+<code>filter(id=user.depart_id)</code></p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">depart</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">depart</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+</li>
+</ol>
+<h2 id="enum-with-choices">enum with <code>choices</code><a class="headerlink" href="#enum-with-choices" title="Permanent link">&para;</a></h2>
+<h3 id="define-with-field_name_choices">define with <code>{field_name}_choices</code><a class="headerlink" href="#define-with-field_name_choices" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">gender_choices</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Male&quot;</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;Female&quot;</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">gender</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">gender_choices</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="when-retrieve-gender-value-it-will-be-but-it-can-be-display-nicely-with-magic-method-modelsget_field_name_display-eg-get_gender_display-will-show-malefemale">when retrieve gender value, it will be &frac12;. But it can be display nicely with #magic method <code>models.get_{field_name}_display()</code> e.g. <code>get_gender_display()</code> will show <code>Male|Female</code><a class="headerlink" href="#when-retrieve-gender-value-it-will-be-but-it-can-be-display-nicely-with-magic-method-modelsget_field_name_display-eg-get_gender_display-will-show-malefemale" title="Permanent link">&para;</a></h3>
+<h2 id="order_by"><code>order_by()</code><a class="headerlink" href="#order_by" title="Permanent link">&para;</a></h2>
+<h3 id="order_byfield_name"><code>order_by("field_name")</code><a class="headerlink" href="#order_byfield_name" title="Permanent link">&para;</a></h3>
+<h3 id="reverse-order-with-order_by-field_name">reverse order with <code>order_by("-field_name")</code><a class="headerlink" href="#reverse-order-with-order_by-field_name" title="Permanent link">&para;</a></h3>
+<p><strong>*</strong> <strong>*</strong></p>
+<h2 id="filter-with-magic-naming"><code>filter()</code> with magic naming<a class="headerlink" href="#filter-with-magic-naming" title="Permanent link">&para;</a></h2>
+<h3 id="filter-with-field-and-value-field-name-myid-in-all-examples">filter with field and value (field name : myid in all examples )<a class="headerlink" href="#filter-with-field-and-value-field-name-myid-in-all-examples" title="Permanent link">&para;</a></h3>
+<h3 id="number-filter">Number filter<a class="headerlink" href="#number-filter" title="Permanent link">&para;</a></h3>
+<ol>
+<li><code>filter(myid__gt=12)</code> -&gt; value &gt;12, You can also filter on
+    <code>myid__lte</code> <code>myid_lt</code> etc</li>
+</ol>
+<h3 id="string-filter">String filter<a class="headerlink" href="#string-filter" title="Permanent link">&para;</a></h3>
+<ol>
+<li><code>mytext__startwith</code>, <code>mytext__endwith</code>, <code>mytext__contains</code></li>
+</ol>
+<h3 id="multi-field-filter-filtermyid_gte12-mytext_contains123">Multi field filter : <code>filter(myid_gte=12, mytext_contains="123")</code><a class="headerlink" href="#multi-field-filter-filtermyid_gte12-mytext_contains123" title="Permanent link">&para;</a></h3>
+<h2 id="pagination">pagination<a class="headerlink" href="#pagination" title="Permanent link">&para;</a></h2>
+<p><strong>*</strong></p>
+<h1 id="django-template">Django Template<a class="headerlink" href="#django-template" title="Permanent link">&para;</a></h1>
+<h2 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link">&para;</a></h2>
+<h3 id="a-template-is-a-text-file-it-can-generate-any-text-based-format-html-xml-csv-etc">A template is a text file. It can generate any text-based format (HTML, XML, CSV, etc.).<a class="headerlink" href="#a-template-is-a-text-file-it-can-generate-any-text-based-format-html-xml-csv-etc" title="Permanent link">&para;</a></h3>
+<h3 id="a-template-contains-variables-which-get-replaced-with-values-when-the-template-is-evaluated-and-tags-which-control-the-logic-of-the-template">A template contains *variables*, which get replaced with values when the template is evaluated, and *tags*, which control the logic of the template.<a class="headerlink" href="#a-template-contains-variables-which-get-replaced-with-values-when-the-template-is-evaluated-and-tags-which-control-the-logic-of-the-template" title="Permanent link">&para;</a></h3>
+<h2 id="-">-----<a class="headerlink" href="#-" title="Permanent link">&para;</a></h2>
+<h3 id="main-idea-checkbox">:main-idea-checkbox:<a class="headerlink" href="#main-idea-checkbox" title="Permanent link">&para;</a></h3>
+<ul>
+<li>What is this aims?</li>
+<li>What is the their research question?</li>
+<li>What is the author arguing?</li>
+<li>What is their answer to the question?</li>
+<li>What points support their argument?</li>
+<li>What are their main reasons?</li>
+<li>What evidence have they used to support their argument?</li>
+<li>What&rsquo;s the significance of these facts?</li>
+<li>What principle are they based on?</li>
+<li>How can I apply them?  How do they fit in with what I already know?</li>
+<li>What&rsquo;s beyond them?</li>
+<li>What're supporting details and explanations?</li>
+</ul>
+<p>::: {.END .drawer}
+:::</p>
+<h3 id="cheatsheet">Cheatsheet<a class="headerlink" href="#cheatsheet" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;template_file.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;var1&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">,</span> <span class="s2">&quot;var2&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">})</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">{{</span> <span class="nv">var1</span> <span class="cp">}}</span>
+<span class="cp">{{</span> <span class="nv">listVar.1</span> <span class="cp">}}</span><span class="x"> &lt;!-- listVar[0] --&gt;</span>
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% for item in lst %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span><span class="x">  &lt;!-- loop list --&gt;</span>
+<span class="x">&lt;span&gt; </span><span class="cp">{{</span> <span class="nv">item</span> <span class="cp">}}</span><span class="x"> &lt;/span&gt;</span>
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% endfor %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+
+<span class="x">&lt;span&gt; </span><span class="cp">{{</span> <span class="nv">dict</span> <span class="cp">}}</span><span class="x"> &lt;/span&gt; &lt;!-- object  --&gt;</span>
+<span class="x">&lt;span&gt; </span><span class="cp">{{</span> <span class="nv">dict.name</span> <span class="cp">}}</span><span class="x"> &lt;/span&gt; &lt;!-- object attribute --&gt;</span>
+
+<span class="cp">{{</span> <span class="nv">list.1.name</span> <span class="cp">}}</span><span class="x">  &lt;!-- list[1].name</span>
+</code></pre></div>
+<p>Loop and condition</p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% for item in dict.keys %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span><span class="x">  &lt;!-- loop object  --&gt;</span>
+<span class="x">&lt;span&gt; </span><span class="cp">{{</span> <span class="nv">item</span> <span class="cp">}}</span><span class="x"> &lt;/span&gt;</span>
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% endfor %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% for k, v in dict.items %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span><span class="x">  &lt;!-- loop object  --&gt;</span>
+<span class="x">&lt;span&gt; </span><span class="cp">{{</span> <span class="nv">k</span> <span class="cp">}}</span><span class="x"> = </span><span class="cp">{{</span> <span class="nv">v</span> <span class="cp">}}</span><span class="x"> &lt;/span&gt;</span>
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% endfor %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% if n == &#39;xxx&#39; %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+<span class="x">&lt;h1&gt; xxxx &lt;/h1&gt;</span>
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% elif n == &quot;XXX&quot; %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+<span class="x">&lt;h1&gt; XXX &lt;/h1&gt;</span>
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% else %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+<span class="x">&lt;h1&gt; ssss &lt;/h1&gt;</span>
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% endif %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+</code></pre></div>
+<h3 id="template-tags-raw-endraw-generally-do-not-require-double-curly-braces-or-quotes-for-variable-names-as-they-inherently-expect-python-like-syntax">Template tags <code>{% raw %}{% ... %}{% endraw %}</code> generally do not require double curly braces or quotes for variable names, as they inherently expect Python-like syntax.<a class="headerlink" href="#template-tags-raw-endraw-generally-do-not-require-double-curly-braces-or-quotes-for-variable-names-as-they-inherently-expect-python-like-syntax" title="Permanent link">&para;</a></h3>
+<h3 id="value-titledefaultdepart-name-or-value-titledefaultdepart-name"><code>value="{{ title|default:'depart name' }}"</code> or <code>value={{ title|default:'depart name' }}</code><a class="headerlink" href="#value-titledefaultdepart-name-or-value-titledefaultdepart-name" title="Permanent link">&para;</a></h3>
+<ol>
+<li>double quotes is strongly recommended</li>
+</ol>
+<h3 id="call-a-function-inside-or-raw-endraw">Call a function inside <code>{{}}</code> or <code>{% raw %}{% %}{% endraw %}</code><a class="headerlink" href="#call-a-function-inside-or-raw-endraw" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><code>{{ obj.get_gender_display() }}</code> is invalid. You can not call a
+    function with <code>()</code> inside <code>{{}}</code>, use <code>{{ obj.get_gender_display }}</code>
+    instead</p>
+</li>
+<li>
+<p>How about arguments? see ((651c1c60-a6bd-47c4-9b9a-889f3d41cf5f))</p>
+</li>
+</ol>
+<h2 id="template-extends">Template extends<a class="headerlink" href="#template-extends" title="Permanent link">&para;</a></h2>
+<h3 id="extends-tag-is-used-for-inheritance-of-templates-in-django-one-needs-to-repeat-the-same-code-again-and-again-using-extends-we-can-inherit-templates-as-well-as-variables"><code>extends</code> tag is used for inheritance of templates in django. One needs to repeat the same code again and again. Using extends we can inherit templates as well as variables.<a class="headerlink" href="#extends-tag-is-used-for-inheritance-of-templates-in-django-one-needs-to-repeat-the-same-code-again-and-again-using-extends-we-can-inherit-templates-as-well-as-variables" title="Permanent link">&para;</a></h3>
+<h3 id="syntax">syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>{% raw %}{% extends &#39;template_name.html&#39; %}{% endraw %}
+
+# examples
+{% raw %}{% extends &quot;./base2.html&quot; %}{% endraw %}
+{% raw %}{% extends &quot;../base1.html&quot; %}{% endraw %}
+{% raw %}{% extends &quot;./my/base3.html&quot; %}{% endraw %}
+</code></pre></div>
+<h3 id="extends-examples">extends examples<a class="headerlink" href="#extends-examples" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>template.html</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;h1&gt;Main Template&lt;/h1&gt;</span>
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% block content %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% endblock %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+</code></pre></div>
+</li>
+<li>
+<p>extends.html overwrite block: content</p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% extends &quot;template.html&quot; %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% block content %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+<span class="x">&lt;h2&gt; GeeksForGeeks is the Best</span>
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% endblock %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+</code></pre></div>
+</li>
+<li>
+<p>block can extends anything, e.g css reference, js code blocks etc</p>
+</li>
+</ol>
+<h2 id="pipe-operator-and-filter">pipe operator <code>|</code> and filter<a class="headerlink" href="#pipe-operator-and-filter" title="Permanent link">&para;</a></h2>
+<h3 id="in-django-template-language-the-pipe-character-is-used-to-apply-filters-to-variables-filters-are-used-to-format-variables-or-perform-some-operation-on-them-before-they-are-rendered-in-the-template">In Django template language, the pipe character <code>|</code> is used to apply filters to variables. Filters are used to format variables or perform some operation on them before they are rendered in the template.<a class="headerlink" href="#in-django-template-language-the-pipe-character-is-used-to-apply-filters-to-variables-filters-are-used-to-format-variables-or-perform-some-operation-on-them-before-they-are-rendered-in-the-template" title="Permanent link">&para;</a></h3>
+<h3 id="syntax_1">Syntax<a class="headerlink" href="#syntax_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">{{</span> <span class="nv">variable</span><span class="o">|</span><span class="nf">filter_name</span><span class="s2">:&quot;argument&quot;</span> <span class="cp">}}</span>
+<span class="x">Sample:</span>
+<span class="cp">{{</span> <span class="nv">my_list</span><span class="o">|</span><span class="nf">join</span><span class="s2">:&quot;, &quot;</span><span class="o">|</span><span class="nf">escape</span> <span class="cp">}}</span>
+</code></pre></div>
+<ol>
+<li><code>|join:", "</code>: The <code>join</code> filter concatenates items in the list into
+    a single string, using ~, ~(comma and space) as a separator.</li>
+</ol>
+<h3 id="as-function-call-with-parameter-is-not-allowed-inside-template-do-this-instead">As function call with parameter is not allowed inside template, do this instead<a class="headerlink" href="#as-function-call-with-parameter-is-not-allowed-inside-template-do-this-instead" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;td class=&quot;py-2 px-4&quot;&gt;</span><span class="cp">{{</span> <span class="nv">obj.create_time.strftime</span><span class="o">(</span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
+<span class="x">Should be write as</span>
+<span class="x">&lt;td class=&quot;py-2 px-4&quot;&gt;</span><span class="cp">{{</span> <span class="nv">obj.create_time</span> <span class="o">|</span> <span class="nf">date</span><span class="s1">:&#39;Y-m-d&#39;</span> <span class="cp">}}</span><span class="x">&lt;/td&gt;</span>
+</code></pre></div>
+<h2 id="include-another-template-file">include another template file<a class="headerlink" href="#include-another-template-file" title="Permanent link">&para;</a></h2>
+<h3 id="tophtml">top.html<a class="headerlink" href="#tophtml" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class </span><span class="o">=</span> <span class="s">&#39;{{ mycss }}&#39;</span><span class="p">&gt;</span> this is header <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="indexhtml">index.html<a class="headerlink" href="#indexhtml" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang=&quot;en&quot;&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="x">    &lt;title&gt;Title&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% include &#39;top.html&#39; with mycss=&quot;acss&quot; %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+
+<span class="x">&lt;h2&gt; 网页body部分 &lt;/h2&gt;</span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<h3 id="include-passing-multiple-values">include passing multiple values<a class="headerlink" href="#include-passing-multiple-values" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% include &quot;name_snippet.html&quot; with person=&quot;Jane&quot; greeting=&quot;Hello&quot; %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+</code></pre></div>
+<p>And with django variables from python codes</p>
+<div class="highlight"><pre><span></span><code><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% extends &#39;base.html&#39; %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% block panel %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% include &#39;form.html&#39; with title=title id=id %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% endblock %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+</code></pre></div>
+<h1 id="form">Form<a class="headerlink" href="#form" title="Permanent link">&para;</a></h1>
+<h2 id="djangos-form-functionality-can-simplify-and-automate-vast-portions-of-this-work-and-can-also-do-it-more-securely-than-most-programmers-would-be-able-to-do-in-code-they-wrote-themselves">Django&rsquo;s form functionality can simplify and automate vast portions of this work, and can also do it more securely than most programmers would be able to do in code they wrote themselves.<a class="headerlink" href="#djangos-form-functionality-can-simplify-and-automate-vast-portions-of-this-work-and-can-also-do-it-more-securely-than-most-programmers-would-be-able-to-do-in-code-they-wrote-themselves" title="Permanent link">&para;</a></h2>
+<h3 id="django-handles-three-distinct-parts-of-the-work-involved-in-forms">Django handles three distinct parts of the work involved in forms:<a class="headerlink" href="#django-handles-three-distinct-parts-of-the-work-involved-in-forms" title="Permanent link">&para;</a></h3>
+<h3 id="preparing-and-restructuring-data-to-make-it-ready-for-rendering">preparing and restructuring data to make it ready for rendering<a class="headerlink" href="#preparing-and-restructuring-data-to-make-it-ready-for-rendering" title="Permanent link">&para;</a></h3>
+<h3 id="creating-html-forms-for-the-data">creating HTML forms for the data<a class="headerlink" href="#creating-html-forms-for-the-data" title="Permanent link">&para;</a></h3>
+<h3 id="receiving-and-processing-submitted-forms-and-data-from-the-client">receiving and processing submitted forms and data from the client<a class="headerlink" href="#receiving-and-processing-submitted-forms-and-data-from-the-client" title="Permanent link">&para;</a></h3>
+<h3 id="flowchart-1"><a href="https://media.geeksforgeeks.org/wp-content/uploads/20200107124202/flowChart-1-1024x682.png">flowChart-1</a><a class="headerlink" href="#flowchart-1" title="Permanent link">&para;</a></h3>
+<h2 id="create-a-form">Create a form<a class="headerlink" href="#create-a-form" title="Permanent link">&para;</a></h2>
+<h3 id="how-to-create-a-formclass-card">How to create a FormClass #card<a class="headerlink" href="#how-to-create-a-formclass-card" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Sample</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+
+<span class="k">class</span> <span class="nc">FormName</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+         <span class="c1"># each field would be mapped as an input field in HTML</span>
+        <span class="n">field_name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+</code></pre></div>
+<h1 id="card-card">card #card<a class="headerlink" href="#card-card" title="Permanent link">&para;</a></h1>
+</li>
+</ol>
+<h3 id="form-class-sample">Form class sample<a class="headerlink" href="#form-class-sample" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+
+<span class="k">class</span> <span class="nc">InputForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">first_name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="n">roll_number</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span>
+                    <span class="n">help_text</span> <span class="o">=</span> <span class="s2">&quot;Enter 6 digit roll number&quot;</span>
+                    <span class="p">)</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">PasswordInput</span><span class="p">())</span>
+</code></pre></div>
+<ol>
+<li>Note if field defined as <code>auto</code> (<code>auto_now</code>, <code>auto_now_add</code>), it may
+    not shown in Form</li>
+</ol>
+<h3 id="form-viewpy">Form view.py<a class="headerlink" href="#form-viewpy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">InputForm</span>
+<span class="k">def</span> <span class="nf">home_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">context</span> <span class="o">=</span><span class="p">{}</span>
+    <span class="n">context</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">InputForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;home.html&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="render-in-template">Render in template<a class="headerlink" href="#render-in-template" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>A form comes with 3 in-built methods that can be used to render
+    Django form fields.</p>
+</li>
+<li>
+<p><a href="https://www.geeksforgeeks.org/form-as_table-render-django-forms-as-table/"><code>{{ form.as_table }}</code></a> will
+    render them as table cells wrapped in \&lt;tr&gt; tags</p>
+</li>
+<li>
+<p><a href="https://www.geeksforgeeks.org/form-as_p-render-django-forms-as-paragraph/"><code>{{ form.as_p }}</code></a> will
+    render them wrapped in \&lt;p&gt; tags</p>
+</li>
+<li>
+<p><a href="https://www.geeksforgeeks.org/form-as_ul-render-django-forms-as-list/"><code>{{ form.as_ul }}</code></a> will
+    render them wrapped in \&lt;li&gt; tags</p>
+</li>
+</ol>
+<h3 id="template">Template:<a class="headerlink" href="#template" title="Permanent link">&para;</a></h3>
+<p>There are a few ways to present form objects</p>
+<ul>
+<li>Field by field</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">form</span> <span class="n">action</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;post&quot;</span><span class="o">&gt;</span>
+    <span class="p">{{</span> <span class="n">form</span><span class="o">.</span><span class="n">first_name</span> <span class="p">}}</span>
+    <span class="p">{{</span> <span class="n">form</span><span class="o">.</span><span class="n">last_name</span> <span class="p">}}</span>
+    <span class="p">{{</span> <span class="n">form</span><span class="o">.</span><span class="n">phone_number</span> <span class="p">}}</span>
+    <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="n">value</span><span class="o">=</span><span class="n">Submit</span><span class="s2">&quot;&gt;</span>
+<span class="o">&lt;/</span><span class="n">form</span><span class="o">&gt;</span>
+</code></pre></div>
+<ul>
+<li>Loop</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;form action = &quot;&quot; method = &quot;post&quot;&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% csrf_token %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% for field in form %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">field</span> <span class="cp">}}</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% endfor %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+<span class="x">    &lt;input type=&quot;submit&quot; value=Submit&quot;&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+</code></pre></div>
+<ul>
+<li><code>{{ form }}</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;form action = &quot;&quot; method = &quot;post&quot;&gt;</span>
+<span class="x">    </span><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% csrf_token %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">form</span> <span class="cp">}}</span>
+<span class="x">    &lt;input type=&quot;submit&quot; value=Submit&quot;&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+</code></pre></div>
+<h2 id="validate-a-form-object">Validate a form object<a class="headerlink" href="#validate-a-form-object" title="Permanent link">&para;</a></h2>
+<h3 id="the-easiest-way-to-validate-a-single-field-is-to-override-the-method-clean_fieldname-for-the-field-you-want-to-check-eg-validate-renewal_date-field">The easiest way to validate a single field is to override the method <code>clean_&lt;fieldname&gt;()</code> for the field you want to check. e.g. Validate <code>renewal_date</code> field<a class="headerlink" href="#the-easiest-way-to-validate-a-single-field-is-to-override-the-method-clean_fieldname-for-the-field-you-want-to-check-eg-validate-renewal_date-field" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ValidationError</span>
+<span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">gettext_lazy</span> <span class="k">as</span> <span class="n">_</span>
+<span class="k">class</span> <span class="nc">RenewBookForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">renewal_date</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">help_text</span><span class="o">=</span><span class="s2">&quot;Enter a date between now and 4 weeks (default 3).&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">clean_renewal_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;renewal_date&#39;</span><span class="p">]</span>
+        <span class="c1"># Check if a date is not in the past.</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="o">&lt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Invalid date - renewal in past&#39;</span><span class="p">))</span>
+
+        <span class="c1"># Check if a date is in the allowed range (+4 weeks from today).</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="o">&gt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Invalid date - renewal more than 4 weeks ahead&#39;</span><span class="p">))</span>
+
+        <span class="c1"># Remember to always return the cleaned data.</span>
+        <span class="k">return</span> <span class="n">data</span>
+</code></pre></div>
+<h2 id="django-form-from-models">Django Form from Models<a class="headerlink" href="#django-form-from-models" title="Permanent link">&para;</a></h2>
+<h3 id="if-the-form-is-coupled-with-database-table-it-is-easy-to-use-modelform">If the form is coupled with database table, it is easy to use ModelForm<a class="headerlink" href="#if-the-form-is-coupled-with-database-table-it-is-easy-to-use-modelform" title="Permanent link">&para;</a></h3>
+<h3 id="models_1">Models<a class="headerlink" href="#models_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Sample:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="k">class</span> <span class="nc">Movie</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">movie_title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+    <span class="n">release_year</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
+    <span class="n">director</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">movie_poster</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ImageField</span><span class="p">(</span><span class="n">upload_to</span><span class="o">=</span><span class="s1">&#39;images/&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">movie_plot</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">movie_title</span>  <span class="c1"># when print movie object it shows title. Also useful</span>
+        <span class="c1">#when movie object is showed in dropdown etc</span>
+</code></pre></div>
+</li>
+<li>
+<p>FieldValidator</p>
+<ol>
+<li>
+<p><code>django.core.validators</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">mobile</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;mobile number&quot;</span>
+    <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">RegexValidator</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^159[0-9]+$&#39;</span><span class="p">,</span> <span class="s1">&#39;mobile start with 159&#39;</span><span class="p">)</span> <span class="p">],</span>
+<span class="p">)</span>
+</code></pre></div>
+</li>
+</ol>
+</li>
+<li>
+<p>A <strong>disabled</strong> field</p>
+<ol>
+<li>For read only field set <code>disabled=True</code>, e.g.
+    <code>mobile = forms.CharField(disabled=True, label='mobile number')</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="create-modelform-class">Create ModelForm class<a class="headerlink" href="#create-modelform-class" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>How to create a ModelForm Class #card</p>
+<ol>
+<li>
+<p>Code</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Movie</span>
+
+<span class="k">class</span> <span class="nc">MovieForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Movie</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;movie_title&#39;</span><span class="p">,</span> <span class="s1">&#39;release_year&#39;</span><span class="p">,</span> <span class="s1">&#39;director&#39;</span><span class="p">,</span> <span class="s1">&#39;movie_poster&#39;</span><span class="p">,</span> <span class="s1">&#39;movie_plot&#39;</span><span class="p">)</span>
+</code></pre></div>
+</li>
+</ol>
+</li>
+<li>
+<p>Sample</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Movie</span>
+
+
+<span class="c1"># Create your forms here.</span>
+<span class="k">class</span> <span class="nc">MovieForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Movie</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;movie_title&#39;</span><span class="p">,</span> <span class="s1">&#39;release_year&#39;</span><span class="p">,</span> <span class="s1">&#39;director&#39;</span><span class="p">,</span> <span class="s1">&#39;movie_poster&#39;</span><span class="p">,</span> <span class="s1">&#39;movie_plot&#39;</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>The <code>Meta</code> class is used to change the behavior of the <code>ModelForm</code> .
+    Within it, specify the model your fields come from and the fields
+    you want to use from that model.</p>
+</li>
+<li>
+<p>Key components of <code>Meta</code> class in ModelForm #card</p>
+<ol>
+<li>
+<p>model the data model class</p>
+</li>
+<li>
+<p>fields: the fields will be shown in the form</p>
+</li>
+<li>
+<p>widgets: used to generate HTML code that override default
+    behavior. e.g. inputbox with CSS styling</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Explains of Meta class</p>
+<ul>
+<li><code>model</code> The Model class</li>
+<li><code>fields</code> It is strongly recommended that you explicitly set all
+    fields that should be edited in the form using the fields
+    attribute. Failure to do so can easily lead to security problems
+    when a form unexpectedly allows a user to set certain fields,
+    especially when new fields are added to a model. If those are
+    not your concerns ~fields = "[[all]{.underline}]{.underline}"
+    ~ can easy your job</li>
+<li><code>exclude</code> Set the exclude attribute of the ModelForm&rsquo;s inner
+    Meta class to a list of fields to be excluded from the form.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PartialAuthorForm</span><span class="p">(</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Author</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span>
+</code></pre></div>
+<ul>
+<li><code>field_classes</code> or formfield<sub>callback</sub> can be used to customize
+    the type of fields instantiated by the form.</li>
+<li><code>widgets</code>: override default <code>forms.TextInput</code>, It is helpful if
+    you need setup <code>css</code> e.g.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PartialAuthorForm</span><span class="p">(</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Author</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;form-control&quot;</span><span class="p">}),</span>
+            <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">PasswordInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;form-control&quot;</span><span class="p">}),</span>
+            <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">NumberInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;form-control&quot;</span><span class="p">}),</span>
+            <span class="s2">&quot;account&quot;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">NumberInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;form-control&quot;</span><span class="p">}),</span>
+            <span class="s2">&quot;department&quot;</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;form-control&quot;</span><span class="p">}),</span>
+        <span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>If you want to apply same attributes for all field, do this
+    instead by override <code>__init__</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UserModelForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">field</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">style</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span>
+                <span class="n">field</span><span class="o">.</span><span class="n">required</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># Make the password field optional</span>
+                <span class="n">field</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">PasswordInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="n">style</span><span class="p">})</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">UserInfo</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;__all__&quot;</span> <span class="c1"># It can be a list of all fields you want to display</span>
+     <span class="c1"># password field can also be setup here</span>
+     <span class="c1"># password = forms.CharField(required=False, widget=forms.PasswordInput()) # some field need special attention</span>
+     <span class="c1"># can also  be put here</span>
+</code></pre></div>
+<ul>
+<li>Error messages</li>
+</ul>
+<p>You can reuse the default error messages. In case the message need
+to be customered for specific field</p>
+<div class="highlight"><pre><span></span><code><span class="n">error_messages</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="s2">&quot;用户名不能为空, 并且不能重复&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="s2">&quot;年龄不能为空， 并且应该处于0~140&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+  <span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Add New field to ModelForm</p>
+<ol>
+<li>
+<p>e.g. Add password confirm input field</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UserModelForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+  <span class="n">confirm_password</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;please input password again&quot;</span><span class="p">,</span>
+        <span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">PasswordInput</span><span class="p">(</span><span class="n">render_value</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">field</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">style</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span>
+                <span class="n">field</span><span class="o">.</span><span class="n">required</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># Make the password field optional</span>
+                <span class="n">field</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">PasswordInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="n">style</span><span class="p">})</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">UserInfo</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;__all__&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p><code>render_values</code> allow pre-fill values</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="the-html-template">The html template<a class="headerlink" href="#the-html-template" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;form method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span>{% csrf_token %}<span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span>
+<span class="x">      </span><span class="cp">{{</span><span class="nv">movie_form</span><span class="cp">}}</span>
+<span class="x">      &lt;button class=&quot;btn btn-primary my-4&quot; type=&quot;submit&quot;&gt;Submit&lt;/button&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+</code></pre></div>
+<h3 id="for-651b71c9-7e23-4638-a89c-240b474388a8-add-__str__">For ((651b71c9-7e23-4638-a89c-240b474388a8)) Add <code>__str__</code><a class="headerlink" href="#for-651b71c9-7e23-4638-a89c-240b474388a8-add-__str__" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Department</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Department&quot;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
+</code></pre></div>
+<p>So that when adding user's department in the dropdown, it will show the
+<code>title</code> instead of "Python Object"</p>
+<h3 id="create-a-modelform-object-card">Create a ModelForm object #card<a class="headerlink" href="#create-a-modelform-object-card" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>an empyt object (create a new entry) <code>form = UserModelForm()</code></p>
+</li>
+<li>
+<p>From a POST request (for parse form submit and save data)
+    <code>form = userModelForm(request.POST)</code></p>
+</li>
+<li>
+<p>From database instance (foir re-edit data)
+    <code>form = UserModelForm(instance=models.User.objects.filter(id=id).first())</code></p>
+</li>
+<li>
+<p>From both POST and database (normally when reedit data when form
+    submission failed)
+    <code>form = UserModelForm(request.POST, instance=models.User.objects.filter(id=id).first())</code></p>
+</li>
+</ol>
+<h3 id="save-modelform">Save ModelForm(),<a class="headerlink" href="#save-modelform" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>You can either parse the POST request and get all fields, You can
+    Also do:</p>
+<div class="highlight"><pre><span></span><code><span class="n">form</span> <span class="o">=</span> <span class="n">UserModelForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>  <span class="c1"># POST to form class</span>
+<span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+    <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># save to DB</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/user/list/&quot;</span><span class="p">)</span>
+<span class="c1"># invalid data auto refill the form and you can re-send again</span>
+<span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;user_add.html&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;form&quot;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
+</code></pre></div>
+</li>
+</ol>
+<h3 id="handle-form-errors">Handle form errors<a class="headerlink" href="#handle-form-errors" title="Permanent link">&para;</a></h3>
+<p><strong>**</strong></p>
+<h1 id="pagination_1">Pagination<a class="headerlink" href="#pagination_1" title="Permanent link">&para;</a></h1>
+<h2 id="with-python-slicing-startend">with python slicing <code>[start:end]</code><a class="headerlink" href="#with-python-slicing-startend" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">qs</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Users</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Users</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">123</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Users</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">123</span><span class="p">)[</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
+
+<span class="n">qs</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Users</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Users</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)[</span><span class="mi">20</span><span class="p">:</span><span class="mi">40</span><span class="p">]</span>
+
+<span class="n">page</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;page&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Users</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)[(</span><span class="n">page</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">page_size</span><span class="p">:</span><span class="n">page</span><span class="o">*</span><span class="n">page_size</span><span class="p">]</span>
+</code></pre></div>
+<h2 id="django-template_1">django template<a class="headerlink" href="#django-template_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;ul class=&#39;pagination&#39;&gt;</span>
+<span class="x">  &lt;li&gt;&lt;a href=&quot;?page=1&quot;&gt;1&lt;/a&gt;&lt;/li&gt;</span>
+<span class="x">  &lt;li&gt;&lt;a href=&quot;?page=2&quot;&gt;2&lt;/a&gt;&lt;/li&gt;</span>
+<span class="x">&lt;/ul&gt;</span>
+</code></pre></div>
+<h2 id="pagination-generate-by-python">Pagination generate by python<a class="headerlink" href="#pagination-generate-by-python" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.utils.safestring</span> <span class="kn">import</span> <span class="n">mark_safe</span>
+<span class="o">...</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Users</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">total_pages</span> <span class="o">=</span> <span class="n">totla</span><span class="o">//</span><span class="n">page_size</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">cur_page</span> <span class="o">-</span> <span class="mi">5</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">cur_page</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+  <span class="n">sel</span> <span class="o">=</span> <span class="s1">&#39;&quot;&quot;&#39;</span>
+  <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">page</span><span class="p">:</span>
+    <span class="n">sel</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&quot;active&quot;&#39;</span>
+  <span class="n">ele</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;li class=</span><span class="si">{</span><span class="n">sel</span><span class="si">}</span><span class="s1"> &gt;&lt;a href=&quot;?page=</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&quot;&gt;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&lt;/a&gt;&lt;/li&gt;&#39;</span>
+  <span class="n">page_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ele</span><span class="p">)</span>
+<span class="n">page_string</span><span class="o">=</span><span class="n">mark_safe</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">page_list</span><span class="p">))</span>
+<span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;list.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;queryset&quot;</span><span class="p">:</span> <span class="n">qs</span><span class="p">,</span> <span class="s2">&quot;page_list&quot;</span><span class="p">:</span> <span class="n">page_string</span><span class="p">})</span>
+</code></pre></div>
+<h2 id="template_1">Template<a class="headerlink" href="#template_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;ul class=&quot;pagination&quot;&gt;</span>
+<span class="x">    &lt;li&gt;&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">head_page</span> <span class="cp">}}</span><span class="x">&quot; aria-label=&quot;Previous&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;首页&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">page_string</span> <span class="cp">}}</span>
+<span class="x">    &lt;li&gt;&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">end_page</span> <span class="cp">}}</span><span class="x">&quot; aria-label=&quot;Next&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;尾页&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
+
+<span class="x">&lt;/ul&gt;</span>
+<span class="x">&lt;br&gt;</span>
+
+<span class="x">&lt;form method=&quot;get&quot;&gt;</span>
+<span class="x">    &lt;div style=&quot;display:inline-block; width: 150px;&quot;&gt;</span>
+<span class="x">        &lt;div class=&quot;input-group&quot;&gt;</span>
+<span class="x">            &lt;span&gt; &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;请输入页码&quot; name=&quot;page&quot;&gt;&lt;/span&gt;</span>
+<span class="x">            &lt;span class=&quot;input-group-btn&quot;&gt;</span>
+<span class="x">                &lt;button class=&quot;btn btn-primary&quot; type=&quot;submit&quot;&gt;跳转&lt;/button&gt;</span>
+<span class="x">            &lt;/span&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+</code></pre></div>
+<h1 id="fbv-and-cbv">FBV and CBV<a class="headerlink" href="#fbv-and-cbv" title="Permanent link">&para;</a></h1>
+<h2 id="fbv-function-based-view">FBV: Function based View<a class="headerlink" href="#fbv-function-based-view" title="Permanent link">&para;</a></h2>
+<h3 id="sample">sample<a class="headerlink" href="#sample" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">my_create_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+  <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;form.html&#39;</span>
+  <span class="n">form_class</span> <span class="o">=</span> <span class="n">MyForm</span>
+
+  <span class="n">form</span> <span class="o">=</span> <span class="n">form_class</span>
+
+  <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">form_class</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+      <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+      <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;list-view&#39;</span><span class="p">))</span>
+  <span class="k">elif</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;PUT&#39;</span><span class="p">:</span>
+    <span class="k">return</span> <span class="o">...</span>
+  <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">template_name</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
+<span class="c1"># url</span>
+</code></pre></div>
+<h2 id="cbv-class-based-view">CBV: Class based view<a class="headerlink" href="#cbv-class-based-view" title="Permanent link">&para;</a></h2>
+<h3 id="use-as_view-and-internally-use-dispatch">use <code>as_view()</code> and internally use <code>dispatch()</code><a class="headerlink" href="#use-as_view-and-internally-use-dispatch" title="Permanent link">&para;</a></h3>
+<h3 id="pros">Pros<a class="headerlink" href="#pros" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>reuseablity by inherited another view</p>
+</li>
+<li>
+<p>DRY</p>
+</li>
+<li>
+<p>extendability</p>
+</li>
+</ol>
+<h3 id="cons">Cons<a class="headerlink" href="#cons" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Implicit code flow</p>
+</li>
+<li>
+<p>decorators require extra override</p>
+</li>
+</ol>
+<h3 id="sample_1">sample<a class="headerlink" href="#sample_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyCreateView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+  <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;form.html&#39;</span>
+  <span class="n">form_class</span> <span class="o">=</span> <span class="n">MyForm</span>
+
+  <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_class</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">template_name</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
+
+  <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_class</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+      <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+      <span class="k">return</span> <span class="n">HttpResonseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;list-view&#39;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
+<span class="c1"># URL</span>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^new/$&#39;</span><span class="p">,</span> <span class="n">MyCreateView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;original-create-view&#39;</span><span class="p">)</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^new_two/$&#39;</span><span class="p">,</span> <span class="n">MyCreateView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">template_name</span><span class="o">=</span><span class="s1">&#39;other_form.html&#39;</span><span class="p">,</span> <span class="n">form_class</span><span class="o">=</span><span class="s1">&#39;MyOtherForm&#39;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;modified-create-view&#39;</span><span class="p">)</span>
+  <span class="p">]</span>
+</code></pre></div>
+<h2 id="djangos-views-requirements">Django&rsquo;s views requirements:<a class="headerlink" href="#djangos-views-requirements" title="Permanent link">&para;</a></h2>
+<h3 id="callable-cbv-has-as_view">callable. CBV has <code>as_view()</code><a class="headerlink" href="#callable-cbv-has-as_view" title="Permanent link">&para;</a></h3>
+<h3 id="accept-httprequest-as-first-positional-argument">accept <code>HttpRequest</code> as first positional argument<a class="headerlink" href="#accept-httprequest-as-first-positional-argument" title="Permanent link">&para;</a></h3>
+<h3 id="return-httpresponse-or-raise-exception">return <code>HttpResponse</code> or raise exception<a class="headerlink" href="#return-httpresponse-or-raise-exception" title="Permanent link">&para;</a></h3>
+<h2 id="reference-django-class-based-views-vs-function-based-views-by-sarthak-kumar-medium">reference: <a href="https://medium.com/@ksarthak4ever/django-class-based-views-vs-function-based-view-e74b47b2e41b">Django : Class Based Views vs Function Based Views | by Sarthak Kumar | Medium</a><a class="headerlink" href="#reference-django-class-based-views-vs-function-based-views-by-sarthak-kumar-medium" title="Permanent link">&para;</a></h2>
+<h2 id="which-should-you-use">which should you use<a class="headerlink" href="#which-should-you-use" title="Permanent link">&para;</a></h2>
+<p><a href="https://miro.medium.com/v2/resize:fit:1400/1*1NgVsYmmLCiwXUy-uE0VLA.jpeg">what type of view should
+use</a></p>
+<h3 id="if-it-is-single-method-eg-get-only-use-fbv-otherwise-cbv">If it is single method (e.g. Get only) use FBV otherwise CBV<a class="headerlink" href="#if-it-is-single-method-eg-get-only-use-fbv-otherwise-cbv" title="Permanent link">&para;</a></h3>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2019 - 2024 RayX
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ray-x" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/x_II_x" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9L389.2 48zm-24.8 373.8h39.1L151.1 88h-42l255.3 333.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/ray-x" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": [], "search": "../../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "tags": {"CSS": "css", "HTML": "html", "JavaScript": "js"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1710 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="关于软件、Geek | Ray，Web & Mobile Lover，Software Engineer | 这里是 @Ray睿 类喵星人的个人博客。专注求索，创新">
+      
+      
+        <meta name="author" content="Ray-X">
+      
+      
+        <link rel="canonical" href="https://rayx.me/blog/archive/2020/">
+      
+      
+        <link rel="prev" href="../2022/">
+      
+      
+        <link rel="next" href="../../2023/12/20/asyncio-python/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+    
+    
+      
+        <title>2020 - Ray-X</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e359304.min.css">
+      
+      
+
+
+  
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+  
+  <style>.md-tag.md-tag--css{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/></svg>');}.md-tag.md-tag--html{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>');}.md-tag.md-tag--js{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>');}.md-tag.md-tag--python{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.25.18.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg>');}</style>
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2020" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Ray-X" class="md-header__button md-logo" aria-label="Ray-X" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ray-X
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2020
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ray-x" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ray-x
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Ray-X" class="md-nav__button md-logo" aria-label="Ray-X" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5Z"/></svg>
+
+    </a>
+    Ray-X
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ray-x" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ray-x
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Whats new
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    latest
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            latest
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2023/12/20/asyncio-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    asyncio python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2023/12/19/python-django-restful-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Django Restful Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../2023/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+      
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    2020
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        <h1 id="2020">2020<a class="headerlink" href="#2020" title="Permanent link">&para;</a></h1>
+      </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-10-12 00:00:00">October 12, 2020</time>
+          <!-- start customization -->
+          
+          <!-- end customization --></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              1 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="tmux-is-a-standard-way-there-is-an-alternative"><a class="toclink" href="../../2020/10/12/alacritty-multi-session-with-neovim/">Tmux is a standard way, there is an alternative:</a></h2>
+<p>If you are a user of neovim, you can use nvim to do terminal buffer management
+Check this:
+<img alt="Alacritty multi-sessions" src="https://raw.githubusercontent.com/ray-x/ray-x.github.io/master/img/in-post/2020-10-alacritty.jpg" /></p>
+<p>Do not need to worry bugs in tumx regarding fonts display, keybinding......
+To start nvim/vim in terminal mode, simply run <code>nvim -c ':term'</code></p>
+    <nav class="md-post__action">
+      <a href="../../2020/10/12/alacritty-multi-session-with-neovim/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-06-14 00:00:00">June 14, 2020</time>
+          <!-- start customization -->
+          
+          <!-- end customization --></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="setup-postgres-debugger-env-with-docker"><a class="toclink" href="../../2020/06/14/setup-postgres-debugger-env-with-docker/">Setup postgres debugger env with docker</a></h2>
+<h3 id="pldebugger-setup"><a class="toclink" href="../../2020/06/14/setup-postgres-debugger-env-with-docker/#pldebugger-setup">pldebugger setup</a></h3>
+<p>pldebugger require recompile with postgresql source code. A little bit hard to setup.
+Lucky enough, debian provides already compiled version.
+Strech: version 10
+Buster: version 12</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">postgres:12</span>
+
+<span class="k">MAINTAINER</span><span class="w"> </span><span class="s">ray@ray-x</span>
+<span class="k">ENV</span><span class="w"> </span>PG_MAJOR<span class="w"> </span><span class="m">12</span>
+<span class="k">ENV</span><span class="w"> </span>PG_VERSION<span class="w"> </span><span class="m">12</span>.3-1.pgdg100+1
+
+<span class="c"># Install the postgresql debugger</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>postgresql-<span class="nv">$PG_MAJOR</span>-pldebugger
+
+
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">5432</span>
+</code></pre></div>
+<p>Start the docker and you should see:</p>
+<div class="highlight"><pre><span></span><code>pgdbg           |
+pgdbg           | PostgreSQL Database directory appears to contain a database; Skipping initialization
+pgdbg           |
+pgdbg           | 2020-06-11 03:00:46.211 UTC [1] LOG:  starting PostgreSQL 12.3 (Debian 12.3-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+pgdbg           | 2020-06-11 03:00:46.211 UTC [1] LOG:  listening on IPv4 address &quot;0.0.0.0&quot;, port 5432
+pgdbg           | 2020-06-11 03:00:46.211 UTC [1] LOG:  listening on IPv6 address &quot;::&quot;, port 5432
+pgdbg           | 2020-06-11 03:00:46.214 UTC [1] LOG:  listening on Unix socket &quot;/var/run/postgresql/.s.PGSQL.5432&quot;
+pgdbg           | 2020-06-11 03:00:46.290 UTC [26] LOG:  database system was shut down at 2020-06-21 03:00:32 UTC
+pgdbg           | 2020-06-11 03:00:46.314 UTC [1] LOG:  database system is ready to accept connections
+</code></pre></div>
+<p>Notes that the logs began with <code>pgdbg</code> instead of <code>postgres</code></p>
+<p>To debug with  dbeaver, install extension :</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">pldbgapi</span><span class="p">;</span>
+</code></pre></div>
+<p>Install debug extension in dbeaver (if not yet)</p>
+<p><code>Help -&gt; Install new software</code>
+<img alt="dbeaver install" src="https://raw.githubusercontent.com/ray-x/ray-x.github.io/master/img/2020-06-install-plugin.jpg" />
+Search and install <code>debugger</code>  Click &ldquo;ok&rdquo;, &ldquo;accept&rdquo;, &ldquo;confirm&rdquo;&hellip; to install
+After restart dbeaver, you should see a debug icon:
+<img alt="DebugIcon" src="https://raw.githubusercontent.com/ray-x/ray-x.github.io/master/img/2020-06-debug-beaver.jpg" /></p>
+<p>Create a demo sql:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">test</span><span class="p">;</span>
+<span class="k">DROP</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">test</span><span class="p">.</span><span class="n">somefunc</span><span class="p">(</span><span class="n">var</span><span class="w"> </span><span class="nb">integer</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">test</span><span class="p">.</span><span class="n">somefunc</span><span class="p">(</span><span class="n">var</span><span class="w"> </span><span class="nb">integer</span><span class="p">)</span><span class="w"> </span><span class="k">RETURNS</span><span class="w"> </span><span class="nb">integer</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">$$</span>
+<span class="k">DECLARE</span>
+<span class="w">   </span><span class="n">quantity</span><span class="w"> </span><span class="nb">integer</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="o">+</span><span class="n">var</span><span class="p">;</span>
+<span class="k">BEGIN</span>
+<span class="w">   </span><span class="n">RAISE</span><span class="w"> </span><span class="n">NOTICE</span><span class="w"> </span><span class="s1">&#39;Quantity here is %&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span><span class="w">      </span><span class="c1">--在这里的数量是30</span>
+<span class="w">   </span><span class="n">quantity</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
+<span class="w">   </span><span class="c1">--</span>
+<span class="w">   </span><span class="c1">-- 创建一个子块</span>
+<span class="w">   </span><span class="c1">--</span>
+<span class="w">   </span><span class="k">DECLARE</span>
+<span class="w">      </span><span class="n">quantity</span><span class="w"> </span><span class="nb">integer</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">   </span><span class="k">BEGIN</span>
+<span class="w">      </span><span class="n">RAISE</span><span class="w"> </span><span class="n">NOTICE</span><span class="w"> </span><span class="s1">&#39;Quantity here is %&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span><span class="w">   </span><span class="c1">--在这里的数量是80</span>
+<span class="w">   </span><span class="k">END</span><span class="p">;</span>
+<span class="w">   </span><span class="n">RAISE</span><span class="w"> </span><span class="n">NOTICE</span><span class="w"> </span><span class="s1">&#39;Quantity here is %&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span><span class="w">      </span><span class="c1">--在这里的数量是50</span>
+<span class="w">   </span><span class="k">RETURN</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span>
+<span class="k">END</span><span class="p">;</span>
+<span class="err">$$</span><span class="w"> </span><span class="k">LANGUAGE</span><span class="w"> </span><span class="n">plpgsql</span><span class="p">;</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="n">test</span><span class="p">.</span><span class="n">somefunc</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+</code></pre></div>
+<p>Configure a debug session:
+Specify database, function, aurgument:
+<img alt="Debug config" src="https://raw.githubusercontent.com/ray-x/ray-x.github.io/master/img/2020-06-debug-config.jpg" /></p>
+<p>Start debug
+<img alt="debug window" src="https://raw.githubusercontent.com/ray-x/ray-x.github.io/master/img/2020-06-debug-window.jpg" /></p>
+    <nav class="md-post__action">
+      <a href="../../2020/06/14/setup-postgres-debugger-env-with-docker/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-06-11 00:00:00">June 11, 2020</time>
+          <!-- start customization -->
+          
+          <!-- end customization --></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="vim-clap-is-a-combination-of-fzf-ctrlp-leaderf-agack-nerdtreein-some-extends"><a class="toclink" href="../../2020/06/11/replace-fzf-with-vim-clap/">vim-clap is a combination of fzf, ctrlp, leaderF, Ag/Ack, nerdtree(in some extends) ......</a></h2>
+<p>Check this:
+<img alt="Clap" src="https://user-images.githubusercontent.com/8850248/73323347-24467380-4282-11ea-8dac-5ef5a1ee63bb.gif" /></p>
+<p>And this:
+Clap providers:
+<a href="https://github.com/liuchengxu/vim-clap#providers">Clap providers</a></p>
+<p>And this:
+<img alt="Clap providers" src="https://raw.githubusercontent.com/ray-x/ray-x.github.io/master/img/clap-providers.jpg" /></p>
+<p>Yes, it also provide a preview window......
+Clap preview:
+<img alt="Clap preview window" src="https://raw.githubusercontent.com/ray-x/ray-x.github.io/master/img/clap-preview.jpg" /></p>
+<p>You can replace you fzf commands with vim-clap, e.g. my vimrc:
+<div class="highlight"><pre><span></span><code><span class="nb">noremap</span> <span class="p">&lt;</span>leader<span class="p">&gt;&lt;</span>s<span class="p">-</span>F<span class="p">&gt;</span> :Clap grep2 <span class="p">++</span>query<span class="p">=&lt;</span>cword<span class="p">&gt;&lt;</span>CR<span class="p">&gt;</span>
+cmap <span class="p">&lt;</span>leader<span class="p">&gt;&lt;</span>S<span class="p">-</span>F<span class="p">&gt;</span><span class="k">h</span> :Clap command_history<span class="p">&lt;</span>CR<span class="p">&gt;</span>
+<span class="nb">noremap</span> <span class="p">&lt;</span>leader<span class="p">&gt;</span><span class="nb">ch</span> :Clap command_history<span class="p">&lt;</span>CR<span class="p">&gt;</span>
+<span class="nb">noremap</span> <span class="p">&lt;</span>leader<span class="p">&gt;</span><span class="k">cf</span> :Clap <span class="k">history</span><span class="p">&lt;</span>CR<span class="p">&gt;</span>
+
+
+<span class="k">function</span><span class="p">!</span> s:<span class="k">history</span><span class="p">(</span><span class="k">arg</span><span class="p">)</span>
+  <span class="k">let</span> <span class="k">l</span>:query<span class="p">=</span><span class="s1">&#39;&#39;</span>
+  <span class="k">let</span> <span class="k">l</span>:subcommand<span class="p">=</span><span class="s1">&#39;&#39;</span>
+  echo <span class="k">a</span>:<span class="k">arg</span>
+  <span class="k">if</span> len<span class="p">(</span><span class="k">a</span>:<span class="k">arg</span><span class="p">)</span> <span class="p">&gt;</span> <span class="m">0</span>
+    <span class="k">let</span> <span class="k">l</span>:query<span class="p">=</span><span class="s1">&#39; ++query=&#39;</span><span class="p">+</span><span class="k">a</span>:<span class="k">arg</span>[<span class="m">1</span>]
+  <span class="k">endif</span>
+
+  <span class="k">if</span> <span class="k">a</span>:<span class="k">arg</span>[<span class="m">0</span>] <span class="p">==</span> <span class="s1">&#39;:&#39;</span>
+    <span class="k">let</span> <span class="k">l</span>:subcommand <span class="p">=</span> <span class="s1">&#39;command_history&#39;</span>
+    <span class="k">let</span> <span class="k">l</span>:query<span class="p">=</span>trim<span class="p">(</span><span class="k">a</span>:<span class="k">arg</span>[<span class="m">1</span>:]<span class="p">)</span>
+  <span class="k">elseif</span> <span class="k">a</span>:<span class="k">arg</span>[<span class="m">0</span>] <span class="p">==</span> <span class="s1">&#39;/&#39;</span>
+    <span class="k">let</span> <span class="k">l</span>:subcommand <span class="p">=</span> <span class="s1">&#39;search_history&#39;</span>
+    <span class="k">let</span> <span class="k">l</span>:query<span class="p">=</span>trim<span class="p">(</span><span class="k">a</span>:<span class="k">arg</span>[<span class="m">1</span>:]<span class="p">)</span>
+  <span class="k">else</span>
+    <span class="k">let</span> <span class="k">l</span>:subcommand <span class="p">=</span> <span class="s1">&#39;history&#39;</span>
+    <span class="k">let</span> <span class="k">l</span>:query<span class="p">=</span>trim<span class="p">(</span><span class="k">a</span>:<span class="k">arg</span><span class="p">)</span>
+  <span class="k">endif</span>
+
+  <span class="k">if</span> len<span class="p">(</span><span class="k">l</span>:query<span class="p">)</span> <span class="p">&gt;</span> <span class="m">1</span>
+    <span class="k">let</span> <span class="k">l</span>:query<span class="p">=</span><span class="s1">&#39; ++query=&#39;</span> . <span class="k">l</span>:query
+  <span class="k">endif</span>
+  exec <span class="s1">&#39;Clap &#39;</span>. <span class="k">l</span>:subcommand . <span class="k">l</span>:query
+
+<span class="k">endfunction</span>
+
+<span class="c">&quot; noremap &lt;c-F&gt;:Clap grep2 ++query=@visual&lt;CR&gt;</span>
+<span class="nb">noremap</span> <span class="p">&lt;</span>s<span class="p">-</span>T<span class="p">&gt;</span> :Clap <span class="k">tags</span><span class="p">&lt;</span>CR<span class="p">&gt;</span>
+nmap <span class="p">&lt;</span>S<span class="p">-</span>F2<span class="p">&gt;</span> :Clap filer<span class="p">&lt;</span>CR<span class="p">&gt;</span>
+
+command<span class="p">!</span> <span class="p">-</span>bang <span class="p">-</span>nargs<span class="p">=</span>* History <span class="k">call</span> s:<span class="k">history</span><span class="p">(&lt;</span><span class="k">q</span><span class="p">-</span>args<span class="p">&gt;)</span>
+command<span class="p">!</span> Files :Clap <span class="k">files</span>
+command<span class="p">!</span> Buffers :Clap <span class="k">buffers</span>
+command<span class="p">!</span> Tags :Clap proj_tags
+command<span class="p">!</span> Buffers :Clap <span class="k">buffers</span>
+command<span class="p">!</span> Commits :Clap commits
+command<span class="p">!</span> Gdiff :Clap git_diff_files
+command<span class="p">!</span> Jumps :Clap <span class="k">jumps</span>
+command<span class="p">!</span> Yanks :Clap yanks
+command<span class="p">!</span> Windows :Clap windows
+command<span class="p">!</span> Ag :Clap <span class="k">grep</span> <span class="p">++</span>query<span class="p">&lt;</span>cword<span class="p">&gt;</span>
+command<span class="p">!</span> Ag2 :Clap grep2 <span class="p">++</span>query<span class="p">&lt;</span>cword<span class="p">&gt;</span>
+</code></pre></div></p>
+<p>So in command mode, when you type <code>History</code> <code>History!</code> <code>History:</code> it will provides similar interface as fzf</p>
+    <nav class="md-post__action">
+      <a href="../../2020/06/11/replace-fzf-with-vim-clap/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-06-10 00:00:00">June 10, 2020</time>
+          <!-- start customization -->
+          
+          <!-- end customization --></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              1 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="how-keys-was-defined-in-terminal"><a class="toclink" href="../../2020/06/10/keycode-in-terminal-for-vimneovim/">How keys was defined in terminal</a></h2>
+<p>This had never been a issue until I give up vimr and use kitty + neovim. I found that my <code>&lt;S-Fn&gt;</code> no longer works.</p>
+<p>Well, do panic, use <code>infocmp</code> or <code>keybind</code> or <code>keycode</code> to find out how the key is defined (also can use <code>cat</code> or <code>sed
+-n -l</code>).
+For kitty <code>&lt;S-F1&gt;</code> key code is <code>^[[1;2P</code> . Here <code>^[</code> means <code>&lt;Esc&gt;</code> or <code>\E</code></p>
+<p>vim and neovim handle key code slight different.</p>
+<p>for neovim, S-Fn was map to F(12+n) , e.g. S-f1 mapped to F13.
+So you can do this:</p>
+<p><div class="highlight"><pre><span></span><code>    map <span class="p">&lt;</span>F13<span class="p">&gt;</span> <span class="p">&lt;</span>S<span class="p">-</span>F1<span class="p">&gt;</span>
+</code></pre></div>
+vim is slightly different. <code>:help keycode</code></p>
+<div class="highlight"><pre><span></span><code>    <span class="k">set</span> <span class="p">&lt;</span>S<span class="p">-</span>F1<span class="p">&gt;=</span>^[[<span class="m">1</span>;<span class="m">2</span>P
+    map <span class="p">&lt;</span>Esc<span class="p">&gt;</span>[<span class="m">1</span>;<span class="m">2</span>P <span class="p">&lt;</span>S<span class="p">-</span>F1<span class="p">&gt;</span>
+</code></pre></div>
+<p>So put it all together
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">!</span>has<span class="p">(</span><span class="s2">&quot;gui_running&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">!</span>has<span class="p">(</span><span class="s1">&#39;nvim&#39;</span><span class="p">)</span>
+    <span class="k">set</span> <span class="p">&lt;</span>S<span class="p">-</span>F1<span class="p">&gt;=</span>^[[<span class="m">1</span>;<span class="m">2</span>P
+    map <span class="p">&lt;</span>Esc<span class="p">&gt;</span>[<span class="m">1</span>;<span class="m">2</span>P <span class="p">&lt;</span>S<span class="p">-</span>F1<span class="p">&gt;</span>
+    <span class="k">set</span> <span class="p">&lt;</span>S<span class="p">-</span>F2<span class="p">&gt;=</span>^[[<span class="m">1</span>;<span class="m">2</span>Q
+    map <span class="p">&lt;</span>Esc<span class="p">&gt;</span>[<span class="m">1</span>;<span class="m">2</span>Q <span class="p">&lt;</span>S<span class="p">-</span>F2<span class="p">&gt;</span>
+    <span class="k">set</span> <span class="p">&lt;</span>S<span class="p">-</span>F3<span class="p">&gt;=</span>^[[<span class="m">1</span>;<span class="m">2</span>R
+    map <span class="p">&lt;</span>Esc<span class="p">&gt;</span>[<span class="m">1</span>;<span class="m">2</span>R <span class="p">&lt;</span>S<span class="p">-</span>F3<span class="p">&gt;</span>
+  <span class="k">else</span>
+    map <span class="p">&lt;</span>F13<span class="p">&gt;</span> <span class="p">&lt;</span>S<span class="p">-</span>F1<span class="p">&gt;</span>
+    map <span class="p">&lt;</span>F14<span class="p">&gt;</span> <span class="p">&lt;</span>S<span class="p">-</span>F4<span class="p">&gt;</span>
+    map <span class="p">&lt;</span>F15<span class="p">&gt;</span> <span class="p">&lt;</span>S<span class="p">-</span>F5<span class="p">&gt;</span>
+    map <span class="p">&lt;</span>F16<span class="p">&gt;</span> <span class="p">&lt;</span>S<span class="p">-</span>F6<span class="p">&gt;</span>
+  <span class="k">endif</span>
+<span class="k">endif</span>
+</code></pre></div></p>
+    <nav class="md-post__action">
+      <a href="../../2020/06/10/keycode-in-terminal-for-vimneovim/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-06-06 00:00:00">June 6, 2020</time>
+          <!-- start customization -->
+          
+          <!-- end customization --></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="vim-as-a-programming-ide"><a class="toclink" href="../../2020/06/06/sharing-my-dotfilesvimkittyzsh-configuration/">vim as a programming ide</a></h2>
+<p>I used to use slickedit, qt-creator, idea (webstorm, goland), vscode, but I am back to vi now. Thanks for <code>Plug</code> I do
+not need to configure my setup everytime....... I am still using sublime edit(as a notepad)</p>
+<p>vimr is one of the best nvim-gui. But it does not in active development in last 3 months(It is hard for a one developer
+project), some of the crash durning coding is annoying. I only use nvim/vim + kitty now.</p>
+<ul>
+<li>
+<p>nvim+kitty configured with pop menu:</p>
+<p><img alt="vim_ide with nvim+kitty" src="https://raw.githubusercontent.com/ray-x/dotfiles/master/img/menu.jpg" /></p>
+</li>
+<li>
+<p>nvim clap preview:</p>
+<p><img alt="vim_ide with nvim+kitty" src="https://raw.githubusercontent.com/ray-x/dotfiles/master/img/clap.jpg" /></p>
+</li>
+<li>
+<p>nvim+kitty coc+ale:</p>
+<p><img alt="vim_ide with nvim+kitty" src="https://raw.githubusercontent.com/ray-x/dotfiles/master/img/coc_float_errorcheck.jpg" /></p>
+</li>
+</ul>
+<h3 id="vim-plugins"><a class="toclink" href="../../2020/06/06/sharing-my-dotfilesvimkittyzsh-configuration/#vim-plugins">Vim Plugins</a></h3>
+<p>I used following plugin a lots</p>
+<ul>
+<li><code>Plug</code></li>
+</ul>
+<p>Plugin management tool</p>
+<ul>
+<li>vim-clap</li>
+</ul>
+<p>Best plugin for search anything. I used it to replace fzf, leaderF, leaderP, NerdTree, Ag/Ack/Rg, yank(ring), project management. undolist and many more</p>
+<ul>
+<li>coc.nvim</li>
+</ul>
+<p>I disabled vim-go and turn to coc-go. Replace defx with coc-explorer, use coc-spell for spell check
+   coc-snippet replaced my ultisnips. Also, there are coc for yml, json, prettier, python, rust, PHP (any language vs code
+   supported)......</p>
+<ul>
+<li>ALE</li>
+</ul>
+<p>well, I am still using ALE and configure lots of lint tool with it.</p>
+<ul>
+<li>Programming support:</li>
+</ul>
+<p>YCM (used to be my favourite, only for C++ and python now), but I am using coc.nvim more offen now,
+  vim-go(for go testing, highlight, gopls disabled),CompleteParameter, emmet-vim, tagbar/vista, polygot,
+  and some language specific plugins (e.g html, js/ts, swift), ctags/gutentags, vim-less, govim(macvim only, with some cool AST)</p>
+<ul>
+<li>Debug:</li>
+</ul>
+<p>vimspector</p>
+<ul>
+<li>Theme, look&amp;feel:</li>
+</ul>
+<p>onedark, eleline, devicons, startify, powerline, indentLine(with nerdfont),</p>
+<ul>
+<li>Color:</li>
+</ul>
+<p>nvim-colorizer.lua (display hex and color in highlight), rainbow, log-highlight, limelight, interestingwords</p>
+<ul>
+<li>Git:</li>
+</ul>
+<p>fugitive, gv, coc-git</p>
+<ul>
+<li>Format:</li>
+</ul>
+<p>tabular, coc-prettier(or, sometimes prettier), auto-pair</p>
+<ul>
+<li>
+<p>Menu and tab:
+  quickui(created a menu for the function/keybind I used less often. I can not rememeber all the commands and keybinds....)
+  wintab: one of the best buffer management tool</p>
+</li>
+<li>
+<p>Tools: floatterm, coc-todolist</p>
+</li>
+<li>
+<p>Move and Edit:</p>
+</li>
+</ul>
+<p>easymotion, multi-cursor (has ome bugs with auto-complete. check this: <a href="https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db">You don’t need more than one cursor in vim</a>
+), vim-anyfold (better folding)</p>
+<h3 id="shell"><a class="toclink" href="../../2020/06/06/sharing-my-dotfilesvimkittyzsh-configuration/#shell">Shell</a></h3>
+<ul>
+<li>OMZshell is good, iterm2 is popular, but I turned to zprezto(with powerlevel10) + kitty. It is cooool and faster, check this:</li>
+</ul>
+<p>Some of the benfits of kitty:</p>
+<ul>
+<li>
+<p>Fully GPU/OpenGL rendering</p>
+</li>
+<li>
+<p>Easy split/tabing</p>
+</li>
+<li>
+<p>Configurable font. You can configure multiple fonts for display. e.g. my configure:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>font_family      FiraCode Retina
+italic_font      InconsolataLGC Nerd Font Italic
+bold_font        FiraCode Semibold
+bold_italic_font InconsolataLGC Nerd Font BoldItalic
+
+# Font size (in pts)
+font_size        16.0
+</code></pre></div>
+<p>Why am I doing this:</p>
+<ul>
+<li>
+<p>bold font is too heavy&hellip; semibold is less distracting</p>
+</li>
+<li>
+<p>Retina font is better than regular (I guess&hellip;)</p>
+</li>
+<li>
+<p>nerd font support</p>
+</li>
+<li>
+<p>Some font do not have italic (e.g. Cascadia)</p>
+</li>
+</ul>
+<p>nvim+kitty split view:</p>
+<p><img alt="vim_ide with nvim+kitty" src="https://raw.githubusercontent.com/ray-x/dotfiles/master/img/kitty.jpg" /></p>
+<p><a href="https://github.com/ray-x/dotfiles">Check my repo</a></p>
+    <nav class="md-post__action">
+      <a href="../../2020/06/06/sharing-my-dotfilesvimkittyzsh-configuration/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-06-01 00:00:00">June 1, 2020</time>
+          <!-- start customization -->
+          
+          <!-- end customization --></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="kafka-sasl-client-setup"><a class="toclink" href="../../2020/06/01/kafka-sasl-client-setup/">kafka SASL client setup</a></h2>
+<hr />
+<p>layout: post
+title: &ldquo;connect to kafka cluster with SASL&rdquo;
+subtitle: [&ldquo;GUI Tools Kafka setup&rdquo;, &ldquo;kafka 客户端SASL配置&rdquo;]
+author: &ldquo;Ray&rdquo;
+header-style: text
+tags:
+  - Docker</p>
+<hr />
+<p>I found there are two GUI client that can be used to connect to kafka:</p>
+<h2 id="conductor"><a class="toclink" href="../../2020/06/01/kafka-sasl-client-setup/#conductor">Conductor</a></h2>
+<p>I have been used this tool for a while, it do have a nice UI design and lots of features. But I need a professional
+licence to use it to connect to kafka.
+<img alt="Conductor UI" src="https://www.conduktor.io/uploads/screenshot-topics.png" /></p>
+<h2 id="kafka-tool"><a class="toclink" href="../../2020/06/01/kafka-sasl-client-setup/#kafka-tool">Kafka Tool</a></h2>
+<p>Kafka Tool also support SASL.
+Please refer to the document here:
+<a href="https://kafkatool.com/documentation/connecting.html">Kafka Tool SASL setup</a>
+JAAS Setup <img alt="JAAS Setup" src="https://kafkatool.com/documentation/sshots/connecting_jaas_config.png" /></p>
+<p>The JAAS connection string <code>sasl.jaas.config: org.apache.kafka.common.security.scram.ScramLoginModule required username="your name" password="you password";</code></p>
+<h2 id="akhq-previously-known-as-kafkahq"><a class="toclink" href="../../2020/06/01/kafka-sasl-client-setup/#akhq-previously-known-as-kafkahq">AKHQ (previously known as KafkaHQ)</a></h2>
+<p>Kafka GUI for Apache Kafka to manage topics, topics data, consumers group, schema registry, connect and more&hellip;
+<a href="https://github.com/tchiotludo/akhq">Github</a></p>
+<p><img alt="AKHQ" src="https://github.com/tchiotludo/akhq/raw/dev/docs/assets/images/video.gif" /></p>
+<p>The simplest way to install the software is using docker <code>tchiotludo/akhq</code></p>
+<p>You need to update the application.yml and  run</p>
+<p><div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/tmp/application.yml:/app/application.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>tchiotludo/akhq
+</code></pre></div>
+Here is a example <a href="https://github.com/tchiotludo/akhq/blob/dev/application.example.yml">application.yml</a></p>
+<p>To setup SASL
+Need to chang bootstrap, security, sasl configure:</p>
+<div class="highlight"><pre><span></span><code>akhq:
+  server:
+    base-path: &quot;&quot; # if behind a reverse proxy, path to akhq without trailing slash (optional). Example: akhq is
+                  # behind a reverse proxy with url http://my-server/akhq, set base-path: &quot;/akhq&quot;.
+                  # Not needed if you&#39;re behind a reverse proxy with subdomain http://akhq.my-server/
+    access-log: # Access log configuration (optional)
+      enabled: true # true by default
+      name: org.akhq.log.access # Logger name
+      format: &quot;[Date: {}] [Duration: {} ms] [Url: {} {} {}] [Status: {}] [Ip: {}] [Length: {}] [Port: {}]&quot; # Logger format
+
+  # default kafka properties for each clients, available for admin / producer / consumer (optional)
+  clients-defaults:
+    consumer:
+      properties:
+        isolation.level: read_committed
+
+  # list of kafka cluster available for akhq
+  connections:
+    my-cluster-sasl:
+      properties:
+        bootstrap.servers: &quot;1.236.23.21:9092,3.15.1.12:9092,3.15.16.69:9092&quot;
+        security.protocol: SASL_PLAINTEXT
+        sasl.mechanism: PLAIN
+        sasl.jaas.config: org.apache.kafka.common.security.scram.ScramLoginModule required username=&quot;your username&quot; password=&quot;your password&quot;;
+
+  pagination:
+    page-size: 25 # number of elements per page (default : 25)
+    threads: 16 # Number of parallel threads to resolve page
+</code></pre></div>
+    <nav class="md-post__action">
+      <a href="../../2020/06/01/kafka-sasl-client-setup/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-05-17 00:00:00">May 17, 2020</time>
+          <!-- start customization -->
+          
+          <!-- end customization --></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="docker-network"><a class="toclink" href="../../2020/05/17/docker-network/">Docker network</a></h2>
+<h3 id="name-space-in-linux"><a class="toclink" href="../../2020/05/17/docker-network/#name-space-in-linux">Name space in linux</a></h3>
+<p>UTS (Hostname+DomainName), User, Mount, IPC, Pid, Net </p>
+<p>In docker virtual network interface was used. Bridged network used to connect the containers</p>
+<p>A good reference <a href="https://www.docker.com/blog/understanding-docker-networking-drivers-use-cases/">Understanding Docker Networking Drivers and their use cases</a></p>
+<p>Docker network bridge
+<img alt="Docker network bridge(From docker.com)" src="http://img.scoop.it/bmExZyvGWidultcwx9hCb7nTzqrqzN7Y9aBZTaXoQ8Q=" /></p>
+<p>Connect to docker network
+ <img alt="Docker network bridge(From docker.com)" src="https://docs.docker.com/engine/tutorials/bridge2.png" /></p>
+<p>The connection between containers that inside different hosts could be through <strong>overlay network</strong>.</p>
+<p>An diagram from docker-k8s-lab shows how overlay works
+<img alt="docker overlay network" src="https://docker-k8s-lab.readthedocs.io/en/latest/_images/docker-overlay.png" /></p>
+<h3 id="docker-networks"><a class="toclink" href="../../2020/05/17/docker-network/#docker-networks">Docker networks:</a></h3>
+<ul>
+<li>Bridge </li>
+<li>alloc by default when contain starts, </li>
+<li>network: docker0IP   172.17.0.1/16 IP address of your docker</li>
+<li>use <code>brctl show</code> to check your connection(two busybox container run at the moment):
+<div class="highlight"><pre><span></span><code>            bridge name     bridge id               STP enabled     interfaces
+            docker0         8000.02429af16b57       no              veth317e9b3
+                                                                    vetha74a241
+</code></pre></div>
+    docker0 connected to two interface base1, and base2. base1 can access base2
+    e.g <code>wget  -q -O - 172.17.0.3</code>  (<code>-</code> means output to stdout)</li>
+<li>host</li>
+<li>access network from host. Share UTS/NET/IPC</li>
+<li>none</li>
+<li>NULL, only have loopback interface</li>
+</ul>
+<h4 id="a-slightly-complicated-docker-run-command"><a class="toclink" href="../../2020/05/17/docker-network/#a-slightly-complicated-docker-run-command">A slightly complicated <code>docker run</code> command</a></h4>
+<p><code>docker run --name mydocker1 -it --network bridge -h mydocker1.rayx.me --dns 8.8.8.8 --dns-search rayx.me --add-host www.rayx.me:54.12.17.68 --rm busybox:latest</code>
+Above command will create a docker named mydocker1 with bridge network.
+The host name  mydocker1.rayx.me, use dns 8.8.8.8
+in /etc/hosts will have :
+<div class="highlight"><pre><span></span><code>54.12.17.68     www.rayx.me
+172.17.0.4      mydocker1.rayx.me mydocker1
+</code></pre></div>
+So access to <a href="http://www.rayx.me">www.rayx.me</a> will use IP 54.12.17.68</p>
+<h3 id="inbound-communications"><a class="toclink" href="../../2020/05/17/docker-network/#inbound-communications">Inbound communications</a></h3>
+<p><code>docker [container] run -p</code> or <code>docker [container] run -P</code>
+  * -P will expose all ports, -p will expose specific ports</p>
+<ul>
+<li>
+<p>-p <containerPort> export container port to a host dynamic port (e.g 3001)
+      e.g. 
+      start the container
+      <code>docker run --name busybox-web1 --rm -p 80  ray-x/httpd-busybox:v0.2</code></p>
+<p>check dynamic port</p>
+<p><code>sudo iptables -t nat -vnL</code></p>
+<p>got:</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="w">    </span>Chain<span class="w"> </span>DOCKER<span class="w"> </span><span class="o">(</span><span class="m">2</span><span class="w"> </span>references<span class="o">)</span>
+<span class="w">    </span>pkts<span class="w"> </span>bytes<span class="w"> </span>target<span class="w">     </span>prot<span class="w"> </span>opt<span class="w"> </span><span class="k">in</span><span class="w">     </span>out<span class="w">     </span><span class="nb">source</span><span class="w">               </span>destination<span class="w">         </span>
+<span class="w">        </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w"> </span>RETURN<span class="w">     </span>all<span class="w">  </span>--<span class="w">  </span>docker0<span class="w"> </span>*<span class="w">       </span><span class="m">0</span>.0.0.0/0<span class="w">            </span><span class="m">0</span>.0.0.0/0<span class="w">           </span>
+<span class="w">        </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w"> </span>DNAT<span class="w">       </span>tcp<span class="w">  </span>--<span class="w">  </span>!docker0<span class="w"> </span>*<span class="w">       </span><span class="m">0</span>.0.0.0/0<span class="w">            </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>tcp<span class="w"> </span>dpt:32768<span class="w"> </span>to:172.17.0.5:80
+</code></pre></div>
+      The 80 port was mapped to 
+      So you could access the web through <code>curl 127.0.0.1:32768</code>
+      Or with <code>docker port</code>
+<div class="highlight"><pre><span></span><code><span class="w">      </span>docker<span class="w"> </span>port<span class="w"> </span>7a96c7ddeb1e
+<span class="w">      </span><span class="m">80</span>/tcp<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">0</span>.0.0.0:32768
+</code></pre></div>
+  * -p <hostPort>:<containerPort> map containerPort to hostPort</p>
+<div class="codehilite"><pre><span></span><code>e.g. `docker run --name busybox-web1 --rm -p 8080::80  ray-x/httpd-busybox:v0.2`
+</code></pre></div>
+
+<ul>
+<li>
+<p>-p <ip>::<containerPort> map containerPort to host <ip> dynamic port (e.g 192.168.0.2:8080)</p>
+<p>e.g. <code>docker run --name busybox-web1 --rm -p 192.168.10.10::80  ray-x/httpd-busybox:v0.2</code>
+All access to docker 80 will need to through 192.168.10.10 network + a dynamic port</p>
+</li>
+<li>
+<p>-p <ip>::<hostPort>:<containerPort> map containerPort to host <ip> and port <hostPort></p>
+</li>
+</ul>
+<p>e.g. <code>docker run --name busybox-web1 --rm -p 192.168.10.10:8080::80  ray-x/httpd-busybox:v0.2</code></p>
+<h3 id="join-other-containers-network-share-uts-ipc-net"><a class="toclink" href="../../2020/05/17/docker-network/#join-other-containers-network-share-uts-ipc-net">join other container&rsquo;s network (share UTS, IPC, Net )</a></h3>
+<p>start up container b1
+<code>docker run --name b1 --rm  -it  busybox</code>
+start up container b2 and join network of b1
+<code>docker run --name b2 --rm  -it  --network container:b1 busybox</code> 
+run <code>ifconfig</code> on both docker container and the ip address will be the same (in my test both are 172.17.0.2)
+<em>b1</em> and <em>b2</em> share network and 127.0.0.1 in b1 is same as 127.0.0.1 in b2. e.g start a webserver in b1 and you can use 127.0.0.1:80 to access the http from b2</p>
+<h3 id="host-network"><a class="toclink" href="../../2020/05/17/docker-network/#host-network">host network</a></h3>
+<p><div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>b2<span class="w"> </span>--rm<span class="w">  </span>-it<span class="w">  </span>--network<span class="w"> </span>host<span class="w"> </span>busybox
+/<span class="w"> </span><span class="c1">#ifconfig</span>
+docker0<span class="w">   </span>Link<span class="w"> </span>encap:Ethernet<span class="w">  </span>HWaddr<span class="w"> </span><span class="m">02</span>:42:32:D3:57:27<span class="w">  </span>
+<span class="w">          </span>inet<span class="w"> </span>addr:172.17.0.1<span class="w">  </span>Bcast:172.17.255.255<span class="w">  </span>Mask:255.255.0.0
+......
+
+enp1s0<span class="w">    </span>Link<span class="w"> </span>encap:Ethernet<span class="w">  </span>HWaddr<span class="w"> </span><span class="m">00</span>:25:22:26:4E:F8<span class="w">  </span>
+<span class="w">          </span>inet<span class="w"> </span>addr:192.168.199.88<span class="w">  </span>Bcast:192.168.199.255<span class="w">  </span>Mask:255.255.255.0
+<span class="w">          </span>inet6<span class="w"> </span>addr:<span class="w"> </span>fe80::225:22ff:fe26:4ef8/64<span class="w"> </span>
+<span class="w">          </span>.....
+
+lo<span class="w">        </span>Link<span class="w"> </span>encap:Local<span class="w"> </span>Loopback<span class="w">  </span>
+<span class="w">          </span>inet<span class="w"> </span>addr:127.0.0.1<span class="w">  </span>Mask:255.0.0.0
+<span class="w">          </span>inet6<span class="w"> </span>addr:<span class="w"> </span>::1/128<span class="w"> </span>Scope:Host
+<span class="w">          </span>UP<span class="w"> </span>LOOPBACK<span class="w"> </span>RUNNING<span class="w">  </span>MTU:65536<span class="w">  </span>Metric:1
+<span class="w">          </span>.....
+
+veth62789e1<span class="w"> </span>Link<span class="w"> </span>encap:Ethernet<span class="w">  </span>HWaddr<span class="w"> </span><span class="m">22</span>:3A:F7:11:B3:92<span class="w">  </span>
+<span class="w">          </span>inet6<span class="w"> </span>addr:<span class="w"> </span>fe80::203a:f7ff:fe11:b392/64<span class="w"> </span>Scope:Link
+<span class="w">          </span>.....
+</code></pre></div>
+By adding <code>--network host</code> container can access the host network</p>
+<h3 id="multiple-bridges-in-a-host"><a class="toclink" href="../../2020/05/17/docker-network/#multiple-bridges-in-a-host">Multiple bridges in a host</a></h3>
+<p>We could use <code>docker network create</code> to create a new bridge(or host, lo, maclan, overlay etc)</p>
+<p>e.g.
+<code>docker network create -d bridge --subnet "172.26.0.0/16" --gateway "172.26.0.2" bridge1</code></p>
+<p>Then we can attach container to the bridge1</p>
+<p><code>docker run --name b2 --rm  -it  --net bridge1 busybox</code> </p>
+    <nav class="md-post__action">
+      <a href="../../2020/05/17/docker-network/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-05-16 00:00:00">May 16, 2020</time>
+          <!-- start customization -->
+          
+          <!-- end customization --></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="create-a-docker-image"><a class="toclink" href="../../2020/05/16/create-a-docker-image/">Create a docker image</a></h2>
+<h4 id="create-a-new-image-from-a-containers-changes"><a class="toclink" href="../../2020/05/16/create-a-docker-image/#create-a-new-image-from-a-containers-changes">Create a new image from a container&rsquo;s changes</a></h4>
+<ul>
+<li>
+<p>Usage:</p>
+</li>
+<li>
+<p>Docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</p>
+</li>
+</ul>
+<p>e.g:
+Get a busy box image and create a file inside container</p>
+<p><div class="highlight"><pre><span></span><code>docker run --name base1 -it busybox
+Unable to find image &#39;busybox:latest&#39; locally
+latest: Pulling from library/busybox
+d9cbbca60e5f: Pull complete
+Digest: sha256:836945da1f3afe2cfff376d379852bbb82e0237cb2925d53a13f53d6e8a8c48c
+Status: Downloaded newer image for busybox:latest
+/ #mkdir -p /data/html
+vi index.html
+&lt;h1&gt;Busybox httpd server. &lt;/h1&gt;
+</code></pre></div>
+In another terminal create a new image and check it
+<div class="highlight"><pre><span></span><code>docker commit -p  -a &quot;rayx1&quot; -m &quot;a base image with index.html&quot; base1
+docker image ls
+REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
+&lt;none&gt;              &lt;none&gt;              64e381aeac90        55 seconds ago       1.22MB
+</code></pre></div>
+you will see a un-named image.
+To tag a image use <code>docker tag</code></p>
+<div class="highlight"><pre><span></span><code>Usage:  docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+
+Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+</code></pre></div>
+<p>e.g tag it to user rayx1 with name httpd-busybox and tag v0.1
+<div class="highlight"><pre><span></span><code>docker tag 64e381aeac90 rayx1/httpd-busybox:v0.1
+</code></pre></div>
+Also you could use multiple tags
+<div class="highlight"><pre><span></span><code>docker tag rayx1/httpd-busybox:v0.1 rayx1/httpd:latest
+</code></pre></div>
+You will see:
+<div class="highlight"><pre><span></span><code>REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
+rayx1/httpd-busybox   v0.1                64e381aeac90        6 minutes ago       1.22MB
+rayx1/httpd           latest              64e381aeac90        6 minutes ago       1.22MB
+</code></pre></div>
+You could remove a tag with image rm</p>
+<div class="highlight"><pre><span></span><code>docker image rm rayx1/httpd
+Untagged: rayx1/httpd:latest
+</code></pre></div>
+<p>You can change docker file fields</p>
+<div class="highlight"><pre><span></span><code>docker inspect base1
+
+[
+    {
+        ...
+        &quot;Config&quot;: {
+            ...
+            &quot;Cmd&quot;: [
+                &quot;sh&quot;
+            ],
+            ...
+        },
+
+    }
+]
+</code></pre></div>
+<p>Create a new image with Cmd start a httpd with version v0.2
+<div class="highlight"><pre><span></span><code>docker commit -a &quot;rayx1 &lt;ray@myemail.com&gt;&quot; -c &#39;CMD [&quot;/bin/httpd&quot;, &quot;-f&quot;, &quot;-h&quot;, &quot;/data/html&quot;]&#39; -p base1 rayx1/httpd-busybox:v0.2
+</code></pre></div></p>
+<h4 id="run-the-new-image"><a class="toclink" href="../../2020/05/16/create-a-docker-image/#run-the-new-image">Run the new image</a></h4>
+<p>docker run : Run a command in a <strong>new</strong> container</p>
+<p><code>docker run --name base2 rayx1/httpd-busybox:v0.2</code>
+Use <code>docker inspect base2</code> get the ipaddress <code>"IPAddress": "172.17.0.3",</code>
+and you can check the http with <code>lynx 172.17.0.3</code></p>
+<h4 id="startstoprestart"><a class="toclink" href="../../2020/05/16/create-a-docker-image/#startstoprestart">start/stop/restart</a></h4>
+<p><code>docker start|stop|restart [OPTIONS] CONTAINER [CONTAINER...]</code>
+Options:
+<div class="highlight"><pre><span></span><code>Options:
+  -a, --attach               Attach STDOUT/STDERR and forward signals
+      --detach-keys string   Override the key sequence for detaching a container
+  -i, --interactive          Attach container&#39;s STDIN
+</code></pre></div>
+Note: You can not re-run a container image again. You have to start/stop/restart your container. <code>container run</code> only can be used for start a <strong>new</strong> container</p>
+<h4 id="login-into-docker-hub-and-push-the-image"><a class="toclink" href="../../2020/05/16/create-a-docker-image/#login-into-docker-hub-and-push-the-image">login into docker hub and push the image</a></h4>
+<p><code>docker login -u rayx1</code>
+<code>docker push rayx1/httpd-busybox</code></p>
+<p>note you can also login into other docker image registry.
+e.g  to login into aliyun docker
+<code>docker login -u rayx1 registry.cn-beijing.aliyuncs.com</code>
+and push
+<code>docker push registry.cn-beijing.aliyuncs.com/rayx1/httpd-busybox:v0.2</code></p>
+<h4 id="export-and-import-saveload-your-local-docker-image-without-push-to-server"><a class="toclink" href="../../2020/05/16/create-a-docker-image/#export-and-import-saveload-your-local-docker-image-without-push-to-server">Export and import (save/load) your local docker image (without push to server)</a></h4>
+<p>If you&rsquo;d like to distribute your images to your teammate without push to a server (maybe, for testing purpose)</p>
+<h5 id="export"><a class="toclink" href="../../2020/05/16/create-a-docker-image/#export">Export</a></h5>
+<p><code>docker save [OPTIONS] IMAGE [IMAGE...]</code>
+e.g pack http-busybox into httpd.<strong>gz</strong>
+<code>docker save -o httpd.gz rayx1/httpd-busybox:v0.2</code>
+or multiple image into a file
+<code>docker save -o httpd.gz rayx1/httpd-busybox:v0.2 rayx1/busybox</code></p>
+<h5 id="import"><a class="toclink" href="../../2020/05/16/create-a-docker-image/#import">import</a></h5>
+<p><code>docker load -i httpd.gz</code></p>
+    <nav class="md-post__action">
+      <a href="../../2020/05/16/create-a-docker-image/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-05-14 00:00:00">May 14, 2020</time>
+          <!-- start customization -->
+          
+          <!-- end customization --></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="what-is-kubernetes"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/">What is Kubernetes?</a></h2>
+<p>Kubernetes, AkA k8s.Kubernetes, is an Production-Grade Container Orchestration System. It can automating deployment, scaling, and managing containerized applications. </p>
+<h2 id="what-kubernetes-can-do"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#what-kubernetes-can-do">What Kubernetes can do?</a></h2>
+<ul>
+<li>Service discovery and load balancing</li>
+<li>Storage orchestration (automatically mount a storage system)</li>
+<li>Automated rollouts and rollbacks</li>
+<li>Automatic bin packing</li>
+<li>Self-healing</li>
+<li>Secret and configuration management</li>
+<li>etc</li>
+</ul>
+<h2 id="kubernetes-clusters"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#kubernetes-clusters">Kubernetes Clusters</a></h2>
+<p><img alt="K8S Architecture" src="https://miro.medium.com/max/1276/1*56l6-yNIXFaNZgofRqPAkA.jpeg" /></p>
+<p>Master node:</p>
+<p>API will access k8s master and k8s will route the request to node.</p>
+<p><img alt="Kubernetes cluster with all the components tied together." src="https://d33wubrfki0l68.cloudfront.net/7016517375d10c702489167e704dcb99e570df85/7bb53/images/docs/components-of-kubernetes.png" />)</p>
+<h3 id="api-server"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#api-server">API Server</a></h3>
+<p>kube-apiserver is a component of the Kubernetes control plane that exposes the Kubernetes API. </p>
+<h3 id="scheduler"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#scheduler">Scheduler</a></h3>
+<p>kube-scheduler control plane component that watches for newly created Pods with no assigned node, and selects a node for them to run on.</p>
+<h3 id="controller-and-kube-controller-manager"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#controller-and-kube-controller-manager">controller and kube-controller-manager</a></h3>
+<ul>
+<li>controller: Control loops that watch the state of your cluster, then make or request changes where needed. Each controller tries to move the current cluster state closer to the desired state.</li>
+<li>Node controller: Monitor nodes. Noticing and responding when nodes go down.</li>
+<li>Endpoints controller: Populates the Endpoints object</li>
+<li>Replication controller: Responsible for maintaining the correct number of pods for every replication controller object in the system.</li>
+<li>Service Account &amp; Token controllers: Create default accounts and API access tokens for new namespaces.</li>
+</ul>
+<h3 id="pod-and-nodes"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#pod-and-nodes">POD And Nodes</a></h3>
+<h4 id="pod"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#pod">Pod</a></h4>
+<p>Kubernetes created a Pod to host your application instance. A Pod is a Kubernetes abstraction that represents a <strong>group of one or more application containers</strong> (such as Docker or rkt), and some shared resources for those containers. Those resources include:</p>
+<ul>
+<li>Shared storage, as Volumes</li>
+<li>Networking, as a unique cluster IP address</li>
+<li>Information about how to run each container, such as the container image version or specific ports to use
+  Pod is a virtual machine to host docker containers/applications
+  Pods overview <img alt="Pods overview" src="https://d33wubrfki0l68.cloudfront.net/fe03f68d8ede9815184852ca2a4fd30325e5d15a/98064/docs/tutorials/kubernetes-basics/public/images/module_03_pods.svg" /></li>
+</ul>
+<p>Normally, we group containers that logically coupled together in a Pod. But in most case we run a single container in a Pod.</p>
+<h4 id="node"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#node">Node</a></h4>
+<p>A Node is a machine that host Pods.
+  <img alt="Node overview" src="https://d33wubrfki0l68.cloudfront.net/5cb72d407cbe2755e581b6de757e0d81760d5b86/a9df9/docs/tutorials/kubernetes-basics/public/images/module_03_nodes.svg" />
+  Node can be either virtual machine or physical machine.
+  Node is consisted with :
+  * kubelet
+  * kube-proxy
+  * Pods
+    * docker(or other container)</p>
+<h4 id="kube-cluster"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#kube-cluster">kube-cluster</a></h4>
+<p>A cluster of Nodes</p>
+<h4 id="labels-and-selectors"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#labels-and-selectors">Labels and Selectors</a></h4>
+<p>Labels are key/value pairs that are attached to objects, such as pods.
+<code>key=value</code>
+selector: used to filter pods</p>
+<h4 id="pod-management"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#pod-management">Pod management</a></h4>
+<h5 id="replicationcontroller"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#replicationcontroller">ReplicationController</a></h5>
+<p>Manage and maintain number of Replica of Pod. (Scale up and down )</p>
+<h5 id="replica-set"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#replica-set">Replica Set</a></h5>
+<p>Manage and maintain number of Replica of Pod. (Scale up and down )</p>
+<h5 id="deployments"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#deployments">Deployments</a></h5>
+<p>Provides declarative updates for Pods and ReplicaSets.</p>
+<h5 id="statefulsets"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#statefulsets">StatefulSets</a></h5>
+<p>Workload API object used to manage stateful applications.</p>
+<h5 id="deamonset"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#deamonset">DeamonSet</a></h5>
+<p>ensures that all (or some) Nodes run a copy of a Pod. </p>
+<h5 id="job"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#job">Job</a></h5>
+<p>A Job creates one or more Pods and ensures that a specified number of them successfully terminate. </p>
+<h5 id="cronjob"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#cronjob">Cronjob</a></h5>
+<p>Creates Jobs on a repeating schedule.</p>
+<h5 id="hpa-horizontal-pod-autoscaler"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#hpa-horizontal-pod-autoscaler">HPA  (Horizontal Pod Autoscaler)</a></h5>
+<p>Horizontal Pod Autoscaler automatically scales the number of pods in a replication controller, deployment, replica set or stateful set based on observed CPU utilization or, metrics. </p>
+<h2 id="_1"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#_1"></a></h2>
+<h4 id="service"><a class="toclink" href="../../2020/05/14/kubernetes-introduction/#service">Service</a></h4>
+<p>An abstract way to expose an application running on a set of Pods as a network service.</p>
+    <nav class="md-post__action">
+      <a href="../../2020/05/14/kubernetes-introduction/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-05-13 00:00:00">May 13, 2020</time>
+          <!-- start customization -->
+          
+          <!-- end customization --></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              1 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="limit-container-resources"><a class="toclink" href="../../2020/05/13/limit-container-resources/">Limit container resources</a></h2>
+<p>By default, a container has no resource constrains and an use as much of resource as kernel scheduler allows. </p>
+<p>We can restraint CPU, Memory and GPU usage for docker</p>
+<h3 id="memory-and-oom"><a class="toclink" href="../../2020/05/13/limit-container-resources/#memory-and-oom">Memory and OOM</a></h3>
+<p>On Linux hosts, if the kernel detects that there is not enough memory to perform important system functions, it throws an OOME, or Out Of Memory Exception, and starts killing processes to free up memory. (Most likely a Java application :-P)
+Docker attempts to mitigate these risks by adjusting the OOM priority on the Docker daemon so that it is less likely to be killed than other processes on the system. </p>
+<p><code>-oom-score-adj</code> to adjust the priority 
+<code>--oom-kill-disable</code>
+* -m or &ndash;memory=   e.g. -m 32m
+* &ndash;memory-swap  The amount of memory this container is allowed to swap to disk.  </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&ndash;memroy-swap</td>
+<td>-m</td>
+<td>explain</td>
+</tr>
+<tr>
+<td>passive S</td>
+<td>passive M</td>
+<td>Container total space S, RAM: M, swap S-M, if S==M, no SWAP allocated</td>
+</tr>
+<tr>
+<td>0</td>
+<td>positive</td>
+<td>swap unset (same as below)</td>
+</tr>
+<tr>
+<td>unset</td>
+<td>positive M</td>
+<td>if swap enabled in host , total swap 2*M</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>positive M</td>
+<td>if Host enabled swap, container can use up all swap space</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cpu"><a class="toclink" href="../../2020/05/13/limit-container-resources/#cpu">CPU</a></h3>
+<p>&ndash;cpus   how may cpus can be used 0.5 half of a CPU, 1.5 one and a half CPU</p>
+<p>e.g 
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--cpus<span class="o">=</span><span class="s2">&quot;.5&quot;</span><span class="w"> </span>ubuntu<span class="w"> </span>/bin/bash
+</code></pre></div></p>
+    <nav class="md-post__action">
+      <a href="../../2020/05/13/limit-container-resources/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+      
+        
+          
+
+
+
+<nav class="md-pagination">
+  <span class="md-pagination__current">1</span> <a class="md-pagination__link" href="page/2/">2</a>
+</nav>
+        
+      
+    </div>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2019 - 2024 RayX
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ray-x" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/x_II_x" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9L389.2 48zm-24.8 373.8h39.1L151.1 88h-42l255.3 333.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/ray-x" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "tags": {"CSS": "css", "HTML": "html", "JavaScript": "js"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

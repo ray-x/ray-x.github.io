@@ -1,0 +1,1362 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="关于软件、Geek | Ray，Web & Mobile Lover，Software Engineer | 这里是 @Ray睿 类喵星人的个人博客。专注求索，创新">
+      
+      
+        <meta name="author" content="Ray-X">
+      
+      
+        <link rel="canonical" href="https://rayx.me/blog/archive/2020/page/2/">
+      
+      
+        <link rel="prev" href="../../../2022/">
+      
+      
+        <link rel="next" href="../../../../2023/12/20/asyncio-python/">
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+    
+    
+      
+        <title>2020 - Ray-X</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.7e359304.min.css">
+      
+      
+
+
+  
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+  
+  <style>.md-tag.md-tag--css{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/></svg>');}.md-tag.md-tag--html{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>');}.md-tag.md-tag--js{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>');}.md-tag.md-tag--python{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.25.18.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg>');}</style>
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2020" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Ray-X" class="md-header__button md-logo" aria-label="Ray-X" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ray-X
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2020
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ray-x" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ray-x
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Ray-X" class="md-nav__button md-logo" aria-label="Ray-X" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5Z"/></svg>
+
+    </a>
+    Ray-X
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ray-x" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ray-x
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Whats new
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    latest
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            latest
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2023/12/20/asyncio-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    asyncio python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2023/12/19/python-django-restful-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Django Restful Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2023/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+      
+    
+  
+  
+    <li class="md-nav__item">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="../../" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    2020
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        <h1 id="2020">2020<a class="headerlink" href="#2020" title="Permanent link">&para;</a></h1>
+      </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-05-12 00:00:00">May 12, 2020</time>
+          <!-- start customization -->
+          
+          <!-- end customization --></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              1 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="build-private-docker-registry"><a class="toclink" href="../../../../2020/05/12/build-private-docker-registry/">Build private docker registry</a></h2>
+<p>If you do not want publish your docker to public registry(e.g. dockerhub, aws, aliyun etc). You can use a local/private registry.
+Docker provide docker registry(which is is a docker image)</p>
+<p>A good reference by digital ocean <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-18-04">how to set up a private  docker reigstry on ubuntu 18.04</a>
+And <a href="https://docs.docker.com/registry/deploying/">Deploy a registry server</a></p>
+<h3 id="publish-image-to-private-registry"><a class="toclink" href="../../../../2020/05/12/build-private-docker-registry/#publish-image-to-private-registry">Publish image to private registry</a></h3>
+<p>Note: need a https server, or 
+add <code>"insecure-registries":[true]</code>
+in /etc/docker/demon.json</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>tag<span class="w"> </span>mydocker:v0.1-11<span class="w"> </span>private.docker.domain.name.com:5000/mydocker:v0.3-11
+docker<span class="w"> </span>push<span class="w"> </span>private.docker.domain.name.com:5000/mydocker:v0.3-11
+</code></pre></div>
+<h2 id="_1"><a class="toclink" href="../../../../2020/05/12/build-private-docker-registry/#_1"></a></h2>
+<h3 id="harbor"><a class="toclink" href="../../../../2020/05/12/build-private-docker-registry/#harbor">Harbor</a></h3>
+<p>Trusted cloud native repository for Kubernetes
+Installation:
+[How To Install Harbor Docker Image Registry on CentOS / Debian / Ubuntu] (<a href="https://sxi.io/how-to-install-harbor-docker-image-registry-on-centos-debian-ubuntu/">https://sxi.io/how-to-install-harbor-docker-image-registry-on-centos-debian-ubuntu/</a>)</p>
+<p><img alt="Harbor login" src="https://sxi.io/wp-content/uploads/2019/09/img_5d909b9c725c6.png" /></p>
+<p><img alt="Harbor projects" src="https://sxi.io/wp-content/uploads/2019/09/img_5d909b9f87ea4.png" /></p>
+    <nav class="md-post__action">
+      <a href="../../../../2020/05/12/build-private-docker-registry/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-05-10 00:00:00">May 10, 2020</time>
+          <!-- start customization -->
+          
+          <!-- end customization --></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              8 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="dockerfile"><a class="toclink" href="../../../../2020/05/10/dockerfile/">Dockerfile</a></h2>
+<p>We can use 
+* storage volume
+* <code>docker exec</code>, 
+* ansible (and similer software) 
+* <code>docker run</code> with options, 
+* container based on container
+* etc</p>
+<p>to build a customized a docker. But with dockerfile it is easy to build a customized docker.</p>
+<h3 id="share-system-variable"><a class="toclink" href="../../../../2020/05/10/dockerfile/#share-system-variable">Share system variable</a></h3>
+<p>As discussed early, we can use a infrastructure container to share system variable to other container. (e.g use consul)
+and generate configure file based on system variable. e.g. a nginx file in /etc/nginx/conf.d/
+<div class="highlight"><pre><span></span><code># server.config
+
+{
+  server_name $MY_NGX_SERVER_NAME;
+  listen $NGX_IP:$NGX_PORT;
+  root $WEB_ROOT;
+}
+</code></pre></div></p>
+<h3 id="dockerfile_1"><a class="toclink" href="../../../../2020/05/10/dockerfile/#dockerfile_1">Dockerfile</a></h3>
+<ul>
+<li>Source code for building Docker images. It contains all the comnands to assemble a image</li>
+<li>Use docker build to access dockerfile</li>
+</ul>
+<h2 id="_1"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_1"></a></h2>
+<h4 id="dockerfile-format"><a class="toclink" href="../../../../2020/05/10/dockerfile/#dockerfile-format">Dockerfile format</a></h4>
+<ul>
+<li><code># Comment</code></li>
+<li>INSTRUCTION arguments<ul>
+<li>Instruction is <strong>NOT</strong> casesensitive, but it is a convention to use UPPERCASE to distinguish them from arguments more easily</li>
+</ul>
+</li>
+<li>Docker runs instructions in a Dockerfile in order</li>
+<li>The first instruction must be <code>FROM</code> in order to specify the Base Docker Image from which your are building.</li>
+</ul>
+<h4 id="docker-ignore-file-dockerignore"><a class="toclink" href="../../../../2020/05/10/dockerfile/#docker-ignore-file-dockerignore">Docker ignore file  .dockerignore</a></h4>
+<p>Same as .gitignore</p>
+<h4 id="environment-variable-and-replacement"><a class="toclink" href="../../../../2020/05/10/dockerfile/#environment-variable-and-replacement">Environment variable and replacement</a></h4>
+<ul>
+<li>env variable (declared with <strong>ENV</strong> statement) can also be used in instructions as variables to be interpreted by Dockerfile</li>
+<li>Env variable are notated in Dockerfile with $variable_name or ${variable_name}</li>
+<li>${variable_name} support bash modifiers</li>
+<li>${var:-word} if var is set, return var value, otherwise return word</li>
+<li>${var:+word} if var is set, return word value, otherwise return empty</li>
+</ul>
+<h3 id="_2"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_2"></a></h3>
+<h3 id="dockerfile-instructions"><a class="toclink" href="../../../../2020/05/10/dockerfile/#dockerfile-instructions">Dockerfile instructions</a></h3>
+<h4 id="from"><a class="toclink" href="../../../../2020/05/10/dockerfile/#from">FROM</a></h4>
+<ul>
+<li>Need to be first un-comment statement.</li>
+<li>Base image can be either local image or docker registry (e.g docker hub)</li>
+<li>Syntax (either)<ul>
+<li>FROM \<repository>[:<tag>] (repository is image name e.g nginx, redis, or ray-x/busybox-httpd)</li>
+<li>FROM \<repository>@\<digest-hash> 
+e.g.
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">busybox:latest</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h2 id="_3"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_3"></a></h2>
+<h4 id="maintainer-depreacted"><a class="toclink" href="../../../../2020/05/10/dockerfile/#maintainer-depreacted">MAINTAINER (depreacted)</a></h4>
+<p>e.g <code>MAINTAINER "rayxu &lt;rayx@rayx.me&gt;"</code></p>
+<h2 id="_4"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_4"></a></h2>
+<h4 id="labels"><a class="toclink" href="../../../../2020/05/10/dockerfile/#labels">LABELS</a></h4>
+<ul>
+<li>Usage: <code>LABEL &lt;key&gt;=&lt;value&gt; [&lt;key&gt;=&lt;value&gt; ...]</code></li>
+<li>The LABEL instruction adds metadata to an image in format of key=value e.g  <code>MAINTAINER="rayxu &lt;rayx@rayx.me&gt;"</code></li>
+</ul>
+<h2 id="_5"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_5"></a></h2>
+<h4 id="copy"><a class="toclink" href="../../../../2020/05/10/dockerfile/#copy">COPY</a></h4>
+<ul>
+<li>Syntax:<ul>
+<li>COPY \<src> [\<src> &hellip;] \<dest></li>
+<li>COPY [&ldquo;\<src>&ldquo;, &hellip; &ldquo;\<dest>&ldquo;]</li>
+</ul>
+</li>
+<li>Copies new files or directories from <src> and adds them to the filesystem of the image at the path \<dest>.</li>
+<li>\<src> may contain wildcards and matching will be done using Go’s filepath.Match rules.</li>
+<li>\<dest> is an absolute path, or a path relative to WORKDIR.</li>
+<li>If \<dest> doesn’t exist, it is created along with all missing directories in its path.</li>
+<li>If space existed in \<src> use &ldquo;<src>&rdquo; e.g. &ldquo;my src folder&rdquo;</li>
+</ul>
+<h2 id="_6"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_6"></a></h2>
+<h4 id="add"><a class="toclink" href="../../../../2020/05/10/dockerfile/#add">ADD</a></h4>
+<p>ADD is similar to COPY, expects that it can add and unzip compressed file (gz, Z, bz2, zip). It also can fetch files from URL e.g. <code>ADD http://nginx.org/download/nginx-1.18.0.tar.gz /usr/local/</code>
+  or <code>nginx-1.18.0.tar.gz /usr/local</code> (will untar to /usr/local, docker will have /usr/local/nginx-1.18.0)
+  * Syntax:
+    *  ADD \<src> [\<src> &hellip;] \<dest>
+    *  ADD [&ldquo;\<src>&ldquo;, &hellip; &ldquo;\<dest>&ldquo;]
+  * Same as COPY 1~5 bullet points
+  * to un-compress, \<dest> must not end with <strong>/</strong>
+  * If use <code>ADD ["&lt;src&gt;", ... "&lt;dest&gt;"]</code> and wildcard existed in src, \<dest> should end with <code>/</code> if \<dest> not end with <code>/</code> it will be treat as a single file instead of a dir </p>
+<h2 id="_7"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_7"></a></h2>
+<h4 id="workdir"><a class="toclink" href="../../../../2020/05/10/dockerfile/#workdir">WORKDIR</a></h4>
+<p>The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile. If the WORKDIR doesn’t exist, it will be created even if it’s not used in any subsequent Dockerfile instruction.
+  * Syntax:
+    *  WORKDIR /path/to/workdir</p>
+<ul>
+<li>WORKDIR can be used multiple time 
+    <div class="highlight"><pre><span></span><code><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr</span>
+<span class="k">RUN</span><span class="w"> </span><span class="nb">pwd</span><span class="w">  </span>#output<span class="w"> </span>/usr
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/bin   </span>
+<span class="k">RUN</span><span class="w"> </span><span class="nb">pwd</span><span class="w"> </span>#<span class="w"> </span>output<span class="w"> </span>/bin
+</code></pre></div></li>
+<li>WORKDIR instruction can resolve environment variables 
+    <div class="highlight"><pre><span></span><code><span class="k">ENV</span><span class="w"> </span>DIRPATH<span class="w"> </span>/path
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">$DIRPATH/$DIRNAME</span>
+</code></pre></div></li>
+</ul>
+<h2 id="_8"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_8"></a></h2>
+<h4 id="volume"><a class="toclink" href="../../../../2020/05/10/dockerfile/#volume">VOLUME</a></h4>
+<p>The VOLUME instruction creates a mount point(volume) and marks it as holding externally mounted volumes from native host or other containers. 
+* Syntax:
+    *  VOLUME \<mountpoint>  e.g. VOLUME /var/log
+    *  VOLUME [&ldquo;\<mountpoint>&ldquo;]  e.g. VOLUME [&ldquo;/opt&rdquo;]
+*  VOLUME is used to share folder between Docker and host/other dockers
+*  Docker VOLUME is similar to <code>-v</code> option in <code>docker run</code> command. Difference is that VOLUME does not specify the directory mapping. Normally is uses to gether the logs in container. More specific, VOLUME /var/log will expose the folder to a folder like <code>/var/lib/docker/volumes/3207....84e4</code> and docker container will know the mapping. Any logs in /var/log in docker will also appear in <code>/var/lib/docker/volumes/3207....84e4</code></p>
+<h2 id="_9"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_9"></a></h2>
+<h4 id="expose"><a class="toclink" href="../../../../2020/05/10/dockerfile/#expose">EXPOSE</a></h4>
+<p>Specify the port/protocol container listens on at runtime. 
+* Syntax:
+EXPOSE \<port> [\<port>/\<protocol>&hellip;]
+* e.g</p>
+<p><code>EXPOSE 11211/upp 11211/tcp 2 323/tcp</code>
+  <code>EXPOSE 80</code> (default tcp)
+  Check the port with <code>docker port image-name</code></p>
+<h2 id="_10"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_10"></a></h2>
+<h4 id="env"><a class="toclink" href="../../../../2020/05/10/dockerfile/#env">ENV</a></h4>
+<p>ENV sets the environment variable \<key> to the value \<value>.
+Note ENV is set in <code>docker build</code> also it will be passed to <code>docker run</code>
+The ENV setup can be overwrite with <code>docker run -e &lt;key&gt;=&lt;value&gt;</code>
+* Syntax:
+ENV \<key> \<value>
+ENV \<key>=\<value> &hellip;</p>
+<ul>
+<li>Refer to the env variable with $variable_name or ${variable_name}</li>
+<li>e.g 
+  <code>ENV myName John Doe</code> equal to <code>ENV myName="John Doe"</code></li>
+</ul>
+<p><code>ENV myName="John Doe" myDog=Rex\ The\ Dog \
+    myCat=fluffy</code>
+* To set a value for a single command, use RUN \<key>=\<value> \<command></p>
+<h2 id="_11"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_11"></a></h2>
+<h4 id="run"><a class="toclink" href="../../../../2020/05/10/dockerfile/#run">RUN</a></h4>
+<p>Run the executable in docke durning docker build.
+The RUN instruction will execute any commands in a new layer on top of the current image and commit the results. The resulting committed image will be used for the next step in the Dockerfile.</p>
+<ul>
+<li>Syntax</li>
+<li>RUN \<command> (shell form, /bin/sh -c \<cmd>)</li>
+<li>RUN  [&ldquo;executable&rdquo;, &ldquo;param1&rdquo;, &ldquo;param2&rdquo;] (exec form)</li>
+<li>Shell form PID not 1 and can not receive Unix signals</li>
+<li>Usage
+  <div class="highlight"><pre><span></span><code><span class="k">ADD</span><span class="w"> </span>http://nginx.org/download/nginx-1.18.0.tar.gz<span class="w"> </span>/usr/local/src
+<span class="k">RUN</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/usr/local/src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+tar<span class="w"> </span>xf<span class="w"> </span>nginx-1.18.0.tar.gz
+</code></pre></div></li>
+<li>exec form does not support shell operator (e.g wildcard, &amp;, &gt;, | etc) to use shell , you need to run <code>RUN ["/bin/bash", "-c", "&lt;command&gt;", "&lt;argument1&gt;", "&lt;argument2&gt;" ... ]</code></li>
+<li></li>
+</ul>
+<h2 id="_12"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_12"></a></h2>
+<h4 id="nohub-exec"><a class="toclink" href="../../../../2020/05/10/dockerfile/#nohub-exec">nohub, exec</a></h4>
+<p>Tp prevent demon stop after shell stops, need to use 
+nohub or exec.</p>
+<p>Note:
+nohub command
+exec: replaces the current process image with a new process image. This means it replace 
+nohub: no hungup, Run a Command or Shell-Script Even after You Logout</p>
+<h4 id="cmd"><a class="toclink" href="../../../../2020/05/10/dockerfile/#cmd">CMD</a></h4>
+<p>The main purpose of a CMD is to provide defaults for an executing container. e.g. buxybox default CMD is /usr/sh, nginx default is nginx 
+* Syntax
+  * CMD [&ldquo;executable&rdquo;,&rdquo;param1&rdquo;,&rdquo;param2&rdquo;] (exec form, this is the preferred form)
+  * CMD [&ldquo;param1&rdquo;,&rdquo;param2&rdquo;] (as default parameters to ENTRYPOINT)
+  * CMD command param1 param2 (shell form)
+  * If multipule CMD provided, only the last one is effective
+  * To build a busybox httpd, which is correct:
+* Pitfull
+    * CMD /bin/httpd -f -h <span WEB_ROOT="WEB_ROOT" class="arithmatex">\({WEB_ROOT}
+    * CMD ["/bin/httpd", "-f", "-h", "\)</span>&rdquo;]
+    * CMD [&ldquo;/bin/sh&rdquo;, &ldquo;-c&rdquo;, &ldquo;/bin/httpd&rdquo;, &ldquo;-f&rdquo;, &ldquo;-h ${WEB_ROOT}&rdquo;]
+    * CMD [&ldquo;/bin/sh&rdquo;, &ldquo;-c&rdquo;, &ldquo;/bin/httpd&rdquo;, &ldquo;-f&rdquo;, &ldquo;-h /opt/data/web&rdquo;]
+  * form 1, you can not enter interative mode with -it, If you need to inspect, need to run `docker exec &lsquo;/bin/sh&rsquo;
+  * form 2, will not work, ${WEB_ROOT} not found 
+  * form 3, will not work, start and then exit(httpd is a backend deamon sh -c httpd will return so PID 1 will exit too, this will stop the container)
+  * form 4, will not work, start and then exit(same as above)</p>
+<h2 id="_13"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_13"></a></h2>
+<h4 id="entrypoint"><a class="toclink" href="../../../../2020/05/10/dockerfile/#entrypoint">ENTRYPOINT</a></h4>
+<p>An ENTRYPOINT allows you to configure a container that will run as an executable.
+* Syntax
+  * ENTRYPOINT [&ldquo;executable&rdquo;, &ldquo;param1&rdquo;, &ldquo;param2&rdquo;] (exec form)
+  * ENTRYPOINT command param1 param2
+* Command line arguments to docker run \<image> will be appended after all elements in an exec form ENTRYPOINT, and will override all elements specified using CMD. This allows arguments to be passed to the entry point, i.e., docker run \<image> -d will pass the -d argument to the entry point. You can override the ENTRYPOINT instruction using the docker run &ndash;entrypoint flag.
+* The shell form prevents any CMD or run command line arguments from being used, but has the disadvantage that your ENTRYPOINT will be started as a subcommand of /bin/sh -c, which does not pass signals. This means that the executable will not be the container’s PID 1 - and will not receive Unix signals - so your executable will not receive a SIGTERM from docker stop \<container>.</p>
+<ul>
+<li>Only the last ENTRYPOINT instruction in the Dockerfile will have an effect.</li>
+<li><code>docker run --entrypoint &lt;cmd&gt; &lt;args&gt;</code> overwrite the ENTRYPOINT in dockerfile</li>
+<li>ENTRYPOINT solve the issue that <code>CMD ["/bin/sh", "-c", "/bin/httpd", "-f", "-h /opt/data/web"]</code> has
+<code>ENTRYPOINT /bin/httpd -f =h /opt/data/web</code> will not exit</li>
+<li>If both CMD and ENTRYPOINT exists, arguments of CMD will be pass to ENTRYPOINT as argument
+  <div class="highlight"><pre><span></span><code>CMD<span class="o">[</span><span class="s2">&quot;/bin/httpd&quot;</span>,<span class="w"> </span><span class="s2">&quot;-f&quot;</span>,<span class="w"> </span><span class="s2">&quot;-h&quot;</span>,<span class="w"> </span><span class="s2">&quot;/opt/data/web&quot;</span><span class="o">]</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span>/bin/sh<span class="w"> </span>-c
+</code></pre></div>
+  is eqal to 
+  <div class="highlight"><pre><span></span><code><span class="k">ENTRYPOINT</span><span class="w"> </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span>/bin/httpd<span class="w"> </span>-f<span class="w"> </span>-h<span class="w"> </span>/opt/data/web
+</code></pre></div>
+  <div class="highlight"><pre><span></span><code>CMD<span class="o">[</span><span class="s2">&quot;/bin/httpd&quot;</span>,<span class="w"> </span><span class="s2">&quot;-f&quot;</span>,<span class="w"> </span><span class="s2">&quot;-h&quot;</span>,<span class="w"> </span><span class="s2">&quot;/opt/data/web&quot;</span><span class="o">]</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/bin/sh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-c&quot;</span><span class="p">]</span>
+</code></pre></div>
+  is eqal to 
+  <div class="highlight"><pre><span></span><code><span class="k">ENTRYPOINT</span><span class="w"> </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span>/bin/httpd<span class="w"> </span>-f<span class="w"> </span>-h<span class="w"> </span>/opt/data/web
+</code></pre></div>
+if you run <code>docker run --name bbxhttpd -it -P bbxhttpd:v0.1 "ls /opt"</code></li>
+</ul>
+<p>&ldquo;ls /opt&rdquo; will overwrite <code>CMD["/bin/httpd", "-f", "-h", "/opt/data/web"]</code> </p>
+<ul>
+<li>Use ENTRYPOINT to set ENV var and start deamon</li>
+</ul>
+<p>file: entrypoint.sh
+  <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
+cat<span class="w"> </span>&gt;<span class="w">  </span>/etc/nginx/conf.d/www.conf<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+<span class="s">server {</span>
+<span class="s">  server_name ${HOSTNAME};</span>
+<span class="s">   listen${IP:-0.0.0.0}:${PORT:-80}</span>
+<span class="s">  root ${NGX_DOC_ROOT:-/usr/share/nginx/html}</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+<span class="nb">exec</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="w">   </span><span class="c1"># PID=1</span>
+</code></pre></div></p>
+<p>file Dockerfile
+  <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">nginx:1.18-alpine</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">NGX_ROOT</span><span class="o">=</span><span class="s2">&quot;/usr/data/html&quot;</span>
+<span class="k">ADD</span><span class="w"> </span>index.html<span class="w"> </span><span class="si">${</span><span class="nv">NGX_ROOT</span><span class="si">}</span>
+<span class="k">ADD</span><span class="w"> </span>entrypoint.sh<span class="w"> </span>/bin/
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/sbin/nginx&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;daemon off;&quot;</span><span class="p">]</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/bin/entrypoint.sh&quot;</span><span class="p">]</span>
+</code></pre></div></p>
+<p>Run:
+  <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>nginx_demo:v0.1<span class="w"> </span>./
+$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>ngx1<span class="w"> </span>--rm<span class="w"> </span>-P<span class="w"> </span>nginx_demo:v0.1
+</code></pre></div>
+  login into docker
+  <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>ngx1<span class="w"> </span>/bin/sh
+<span class="c1"># ps</span>
+PID<span class="w">  </span>USER<span class="w">  </span>TIME<span class="w">  </span>COMMAND
+<span class="m">1</span><span class="w">    </span>ROOT<span class="w">  </span><span class="m">0</span>:00<span class="w">  </span>nginx:<span class="w"> </span>master<span class="w"> </span>proccess<span class="w"> </span>/usr/bin/nginx<span class="w"> </span>-g<span class="w"> </span>daemon<span class="w"> </span>off<span class="p">;</span><span class="w"> </span>
+</code></pre></div></p>
+<p>You will see nginx started and use ROOT user. That is not good for security reason</p>
+<p>#
+  ### USER
+  User name for RUN, CMD, ENTRYPOINT
+  * Syntax
+    * USER \<UID>[:\<GID>]
+    * USER \<user>[:\<group>]
+  * check /etc/passwd for \<UID> </p>
+<h2 id="_14"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_14"></a></h2>
+<h4 id="healthcheck"><a class="toclink" href="../../../../2020/05/10/dockerfile/#healthcheck">HEALTHCHECK</a></h4>
+<p>The HEALTHCHECK instruction tells Docker how to test a container to check that it is still working. (e.g. not responding, infinite loop)
+Syntax
+* HEALTHCHECK [OPTIONS] CMD command  (check container health by running a command inside the container)
+  * The options that can appear before CMD are:
+    * &ndash;interval=DURATION (default: 30s)
+    * &ndash;timeout=DURATION (default: 30s)
+    * &ndash;start-period=DURATION (default: 0s)
+    * &ndash;retries=N (default: 3)
+  * Response:
+    * 0: success - the container is healthy and ready for use
+    * 1: unhealthy - the container is not working correctly
+    * 2: reserved - do not use this exit code
+* HEALTHCHECK NONE (disable any healthcheck inherited from the base image)
+example:
+<div class="highlight"><pre><span></span><code><span class="k">HEALTHCHECK</span><span class="w"> </span>--interval<span class="o">=</span>5m<span class="w"> </span>--timeout<span class="o">=</span>5s<span class="w"> </span>--start-period<span class="w"> </span><span class="o">=</span><span class="w"> </span>1m<span class="se">\</span>
+<span class="w">  </span>CMD<span class="w"> </span>curl<span class="w"> </span>-f<span class="w"> </span>http://localhost/<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+</code></pre></div></p>
+<p>A more complex example
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">nginx:1.18-alpine</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">NGX_ROOT</span><span class="o">=</span><span class="s2">&quot;/usr/data/html&quot;</span>
+<span class="k">ADD</span><span class="w"> </span>index.html<span class="w"> </span><span class="si">${</span><span class="nv">NGX_ROOT</span><span class="si">}</span>
+<span class="k">ADD</span><span class="w"> </span>entrypoint.sh<span class="w"> </span>/bin/
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">80</span>
+<span class="k">HEALTHCHECK</span><span class="w"> </span>--start-period<span class="w"> </span><span class="o">=</span><span class="w"> </span>3s<span class="w"> </span>--interval<span class="o">=</span><span class="m">10</span><span class="w"> </span>--timeout<span class="o">=</span>1s<span class="w"> </span>CMD<span class="w"> </span>wget<span class="w"> </span>-O<span class="w"> </span>-<span class="w"> </span>-q<span class="w"> </span>http://<span class="o">{</span>IP:-0.0.0.0<span class="o">}</span>:<span class="si">${</span><span class="nv">PORT</span><span class="k">:-</span><span class="nv">80</span><span class="si">}</span>/
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/sbin/nginx&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;daemon off;&quot;</span><span class="p">]</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/bin/entrypoint.sh&quot;</span><span class="p">]</span>
+</code></pre></div>
+The check result will show in console:
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>web1<span class="w"> </span>--rm<span class="w"> </span>-P<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;PORT=8080&quot;</span><span class="w"> </span>ngx:v0.1
+<span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">10</span>/May/2020:18:11:20<span class="w"> </span>+0000<span class="o">]</span><span class="w"> </span><span class="s2">&quot;GET / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span><span class="s2">&quot;Wget&quot;</span><span class="w"> </span><span class="s2">&quot;-&quot;</span>
+<span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">10</span>/May/2020:18:11:23<span class="w"> </span>+0000<span class="o">]</span><span class="w"> </span><span class="s2">&quot;GET / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span><span class="s2">&quot;Wget&quot;</span><span class="w"> </span><span class="s2">&quot;-&quot;</span>
+</code></pre></div></p>
+<h2 id="_15"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_15"></a></h2>
+<h4 id="shell"><a class="toclink" href="../../../../2020/05/10/dockerfile/#shell">SHELL</a></h4>
+<p>The SHELL instruction allows the default shell used for the shell form of commands to be overridden. The default shell on Linux is [&ldquo;/bin/sh&rdquo;, &ldquo;-c&rdquo;], and on Windows is [&ldquo;cmd&rdquo;, &ldquo;/S&rdquo;, &ldquo;/C&rdquo;]. The SHELL instruction must be written in JSON form in a Dockerfile.
+* Syntax
+  * SHELL [&ldquo;executable&rdquo;, &ldquo;parameters&rdquo;]
+* Example
+  * <code>SHELL ["powershell", "-command"]</code>
+  * <code>SHELL ["/usr/bin/zsh", "-c"]</code></p>
+<h2 id="_16"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_16"></a></h2>
+<h4 id="stopsignal"><a class="toclink" href="../../../../2020/05/10/dockerfile/#stopsignal">STOPSIGNAL</a></h4>
+<p>sets the system call signal that will be sent to the container to exit.
+* Syntex
+  * STOPSIGNAL signal</p>
+<h2 id="_17"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_17"></a></h2>
+<h4 id="arg"><a class="toclink" href="../../../../2020/05/10/dockerfile/#arg">ARG</a></h4>
+<p>The ARG instruction defines a variable that users can pass at build-time to the <strong>builder</strong> with the <strong>docker build</strong> command using the &ndash;build-arg <varname>=<value> flag. If a user specifies a build argument that was not defined in the Dockerfile, the build outputs a warning.
+This provide a way to use one dockerfile to meet different requirement
+* Syntex
+  * ARG \<name>[=\<default value>]</p>
+<p>example:
+<div class="highlight"><pre><span></span><code>...
+
+<span class="k">ARG</span><span class="w"> </span><span class="nv">auther</span><span class="o">=</span><span class="s2">&quot;ray-x&quot;</span>
+<span class="k">LABEL</span><span class="w"> </span><span class="nv">maintainer</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">auther</span><span class="si">}</span><span class="s2">&quot;</span>
+...
+</code></pre></div>
+Use &ndash;build-arg to pass the ARG in
+<code>docker build --build-arg auther="ray-x rayx@mail.com"</code></p>
+<h2 id="_18"><a class="toclink" href="../../../../2020/05/10/dockerfile/#_18"></a></h2>
+<h4 id="onbuild"><a class="toclink" href="../../../../2020/05/10/dockerfile/#onbuild">ONBUILD</a></h4>
+<p>The ONBUILD instruction adds a trigger instruction to be executed at a later time, when the image is used as the base for another build.
+The trigger will be executed in the context of the downstream build, as if it had been inserted immediately after the FROM instruction in the downstream Dockerfile.
+* Syntax
+  * ONBUILD \<INSTRUCTION>
+  * ONBUILD can not use in ONBUILD <code>ONBUILD ONBUILD CMD ["ls"]</code> is illegal
+  * Use onbuild tag for base image has onbuild
+  * COPY, ADD may not work....(different context)</p>
+<p>e.g. docker nginx1:v0-onbuild
+<div class="highlight"><pre><span></span><code>...
+<span class="k">ONBUILD</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span>http://nginx.org/download/nginx-1.18.0.tar.gz<span class="w"> </span>/usr/local/src
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">nginx1:v0-onbuild</span>
+</code></pre></div>
+    <nav class="md-post__action">
+      <a href="../../../../2020/05/10/dockerfile/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-05-09 00:00:00">May 9, 2020</time>
+          <!-- start customization -->
+          
+          <!-- end customization --></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="docker-storage"><a class="toclink" href="../../../../2020/05/09/docker-storage/">Docker storage</a></h2>
+<p>Quote from docker.com
+&ldquo;Copy-on-write is a strategy of sharing and copying files for maximum efficiency. If a file or directory exists in a lower layer within the image, and another layer (including the writable layer) needs read access to it, it just uses the existing file. The first time another layer needs to modify the file (when building the image or running the container), the file is copied into that layer and modified. This minimizes I/O and the size of each of the subsequent layers. These advantages are explained in more depth below.&rdquo;</p>
+<p>COW is low efficiency and thus I/O intensive application will need to mount data volume from host to docker.</p>
+<p>Storage volume will help data persistency after docker image removed. Also split data with binary executable.</p>
+<h3 id="bind-mounts"><a class="toclink" href="../../../../2020/05/09/docker-storage/#bind-mounts">Bind mounts</a></h3>
+<p>A volume that points to a user specified location on host file system
+<img alt="bind mount" src="https://docs.docker.com/storage/images/types-of-mounts-bind.png" />
+/my/bind/volume  -&gt; (bind)  to host /user/configured/directory</p>
+<h3 id="docker-managed-volume"><a class="toclink" href="../../../../2020/05/09/docker-storage/#docker-managed-volume">Docker managed volume</a></h3>
+<p>Docker deamon creates managed volumes in a portion of host&rsquo;s file system that owned by docker
+`var/lib/docker/vfs/dir/<volume-id></p>
+<h3 id="usage-use-v-to-use-volume"><a class="toclink" href="../../../../2020/05/09/docker-storage/#usage-use-v-to-use-volume">Usage: Use <code>-v</code> to use volume</a></h3>
+<ul>
+<li>Dockage-managed volume:</li>
+<li>docker run -it &ndash;name bbox1 -v /data busybox</li>
+<li>docker inspect -f {{.Mounts}} bbox1<ul>
+<li>Inspect bbox1 container volume, volume id and directory in host ([{volume bb23e94e907dc29f3e62deddd332520d34f489177c5bbd5b03a8a75426430a19 /var/lib/docker/volumes/bb23e94e907dc29f3e62deddd332520d34f489177c5bbd5b03a8a75426430a19/_data /data local  true }]
+)</li>
+</ul>
+</li>
+<li>Bind mount volume</li>
+<li>docker run -it &ndash;name bbox2 -v HOSTDIR:VOLUMEDIR  busybox  e.g. <code>docker run -it --name bbox2 -v /data/volumes/b2:/data  busybox</code></li>
+<li>docker inspect -f {{.Mounts}} bbox2<ul>
+<li>output: <code>[{bind  /data/volumes/b2 /data   true rprivate}]</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="share-folder-and-joint-container-with-v-and-volumes-from"><a class="toclink" href="../../../../2020/05/09/docker-storage/#share-folder-and-joint-container-with-v-and-volumes-from">Share folder and joint container with <code>-v</code> and <code>--volumes-from</code></a></h3>
+<ul>
+<li>User case duplicate setup/data:</li>
+<li>Container A startup and access file/setup F in host.</li>
+<li>Container B startup and access F through container A</li>
+<li>Container C startup and access F through container A</li>
+<li>Container A could stop/pause</li>
+<li>Network duplication</li>
+<li>Container A startup and startup network network1 and loopback and filesystem</li>
+<li>Container Nginx started up and use A to access network1 and loopback and nginx setup</li>
+<li>container tomcat started up and use A to access loopback and tomcat setup</li>
+<li>container mysql started up and use A to loopback and data volume</li>
+<li>Application server started up and use A to access loopback</li>
+</ul>
+<h4 id="instruction-example"><a class="toclink" href="../../../../2020/05/09/docker-storage/#instruction-example">Instruction example</a></h4>
+<p>Startup a infrastructure container infrcon access host folder /data/infracon/volume
+<code>docker run --name infracon -it -v /data/infracon/volume/:/data/web/html busybox</code></p>
+<p>Startup httpd
+<code>docker run --name httpd --network container:infracon --volumes-from infracon -it bosybox</code></p>
+    <nav class="md-post__action">
+      <a href="../../../../2020/05/09/docker-storage/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-05-08 00:00:00">May 8, 2020</time>
+          <!-- start customization -->
+          
+          <!-- end customization --></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="useful-docker-commands"><a class="toclink" href="../../../../2020/05/08/useful-docker-commands/">Useful docker commands</a></h2>
+<p>Some most used docker commands.
+On ubuntu, if docker install with snap, add /snap/bin/ to PATH</p>
+<p>Most docker command should have two levels. But for comparability reason commands can be both top level command and command with sub commands.</p>
+<p>e.g.</p>
+<p><code>docker pull nginx</code> should be <code>docker</code> <em><code>image</code></em> <code>pull nginx</code> in latest docker versions.  I will use <code>docker [image] pull</code> to indicate the command can either be <code>docker image pull</code> or <code>docker pull</code></p>
+<h4 id="docker-image-vs-container"><a class="toclink" href="../../../../2020/05/08/useful-docker-commands/#docker-image-vs-container">Docker image vs container</a></h4>
+<p>From article <a href="http://paislee.io/how-to-automate-docker-deployments/">How to Automate Docker Deployments</a>
+An image is an inert, immutable, file that&rsquo;s essentially a snapshot of a container. Images are created with the <em>build</em> command, and they&rsquo;ll produce a container when started with <em>run</em>. </p>
+<h4 id="useful-commands"><a class="toclink" href="../../../../2020/05/08/useful-docker-commands/#useful-commands">Useful commands</a></h4>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Command description</th>
+<th>Command example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker [COMMAND] --help</code></td>
+<td>man page for docker</td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker version</code></td>
+<td>version number</td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker info</code></td>
+<td>docker info (build, file system etc)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker inspect NAME|ID</code></td>
+<td>low-level information on Docker objects</td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker search</code></td>
+<td>Search a image by name</td>
+<td>search nginx image <code>docker search nginx</code></td>
+</tr>
+<tr>
+<td><code>docker [image] pull</code></td>
+<td>Pull a image by name</td>
+<td>pull nginx image <code>docker image pull nginx</code> or to specific a version <code>docker image pull nginx:stable-alpine</code> or <code>docker image pull nginx:1.16.1-alpine</code></td>
+</tr>
+<tr>
+<td><code>docker [image] ls</code></td>
+<td>list downloaded images</td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker [image] rmi image-id</code></td>
+<td>remove docker images</td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker [image] rm container-id</code></td>
+<td>remove docker images</td>
+<td></td>
+</tr>
+<tr>
+<td><code>docker [container] ls</code></td>
+<td>equal to <code>docker ps</code></td>
+<td><code>COMMAND</code> field indicate the current running process in the container <code>-a</code> display stopped container</td>
+</tr>
+<tr>
+<td><code>docker network ls</code></td>
+<td>list available networks</td>
+<td>by default started container will be added to <strong>bridge(NAT)</strong> network</td>
+</tr>
+<tr>
+<td><code>docker run IMAGE</code></td>
+<td>run a docker image</td>
+<td><ul><li> IMAGE image name, e.g <code>nginx</code>, <code>nginx:nginx:alpin</code> if not available in local, will download</li><li> &ndash;name [imagename]</li> <li>&ndash;rm [remove after stop]</li><li>-it run in interactive mode and allocate a TTY</li><li>-d detach mode, for demons</li></ul></td>
+</tr>
+<tr>
+<td><code>docker stop/start</code></td>
+<td>stop/start a docker container</td>
+<td>start can only used to start a stopped container <code>-ai</code> interactive</td>
+</tr>
+<tr>
+<td><code>docker kill</code></td>
+<td>send kill -9 to container(image name)and force it stop. container will be in exited status</td>
+<td><code>docker stop</code> will send 15</td>
+</tr>
+<tr>
+<td><code>docker [container] rm</code></td>
+<td>delete a container</td>
+<td>container status need to be <code>exited</code></td>
+</tr>
+<tr>
+<td><code>docker exec</code></td>
+<td>Run a command in a running container</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="play-around"><a class="toclink" href="../../../../2020/05/08/useful-docker-commands/#play-around">Play around</a></h4>
+<div class="highlight"><pre><span></span><code>docker run --name kvstore -d redis:6-alpine
+
+docker ps
+docker pause kvstore
+docker unpause kvstore
+docker container logs kvstore  #get logs
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>CONTAINER ID</th>
+<th>IMAGE</th>
+<th>COMMAND</th>
+<th>CREATED</th>
+<th>STATUS</th>
+<th>PORTS</th>
+<th>NAMES</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>633a89c3f23e</td>
+<td>redis:6-alpine</td>
+<td>&ldquo;docker-entrypoint.s…&rdquo;</td>
+<td>5 seconds ago</td>
+<td>Up 44 econds</td>
+<td>6379/tcp</td>
+<td>kvstore</td>
+</tr>
+</tbody>
+</table>
+<p>login into the docker and run bin/sh
+<div class="highlight"><pre><span></span><code>docker exec -it kvstore  /bin/sh
+/data #
+</code></pre></div></p>
+<h4 id="docker-cheat-sheet"><a class="toclink" href="../../../../2020/05/08/useful-docker-commands/#docker-cheat-sheet">Docker cheat sheet</a></h4>
+<p>A good summary <a href="https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf">Docker Cheet Sheet</a> </p>
+<h4 id="base-command"><a class="toclink" href="../../../../2020/05/08/useful-docker-commands/#base-command">Base command</a></h4>
+<p>from latest cmd line reference <a href="https://docs.docker.com/engine/reference/commandline/docker/">Docker(base command)</a> </p>
+<p>Docker container life cycle <img alt="Docker Events Explained" src="https://i.stack.imgur.com/w80Ai.png" /></p>
+<p>And this one:
+<img alt="Docker Events Explained" src="https://gliderlabs.com/images/2015/docker_events.png" /></p>
+    <nav class="md-post__action">
+      <a href="../../../../2020/05/08/useful-docker-commands/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+      
+        
+          
+
+
+
+<nav class="md-pagination">
+  <a class="md-pagination__link" href="../../">1</a> <span class="md-pagination__current">2</span>
+</nav>
+        
+      
+    </div>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2019 - 2024 RayX
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ray-x" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/x_II_x" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9L389.2 48zm-24.8 373.8h39.1L151.1 88h-42l255.3 333.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/ray-x" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": [], "search": "../../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "tags": {"CSS": "css", "HTML": "html", "JavaScript": "js"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

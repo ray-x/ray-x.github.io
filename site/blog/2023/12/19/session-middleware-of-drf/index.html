@@ -1,0 +1,1052 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="关于软件、Geek | Ray，Web & Mobile Lover，Software Engineer | 这里是 @Ray睿 类喵星人的个人博客。专注求索，创新">
+      
+      
+        <meta name="author" content="Ray">
+      
+      
+        <link rel="canonical" href="https://rayx.me/blog/2023/12/19/session-middleware-of-drf/">
+      
+      
+        <link rel="prev" href="../template-and-form-of-drf/">
+      
+      
+        <link rel="next" href="../python-django-restful-framework/">
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+    
+    
+      
+        <title>Session Middleware of DRF - Ray-X</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.7e359304.min.css">
+      
+      
+
+
+  
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+  
+  <style>.md-tag.md-tag--css{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/></svg>');}.md-tag.md-tag--html{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>');}.md-tag.md-tag--js{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>');}.md-tag.md-tag--python{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.25.18.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg>');}</style>
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#login-session-and-cookie" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Ray-X" class="md-header__button md-logo" aria-label="Ray-X" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ray-X
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Session Middleware of DRF
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ray-x" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ray-x
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Ray-X" class="md-nav__button md-logo" aria-label="Ray-X" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5Z"/></svg>
+
+    </a>
+    Ray-X
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ray-x" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ray-x
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Whats new
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    latest
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            latest
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20/asyncio-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    asyncio python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-django-restful-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Django Restful Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2023/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2020/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2020
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#an-http-cookie-web-cookie-browser-cookie-is-a-small-piece-of-data-that-a-server-sends-to-a-users-web-browser-the-browser-may-store-the-cookie-and-send-it-back-to-the-same-server-with-later-requests-typically-an-http-cookie-is-used-to-tell-if-two-requests-come-from-the-same-browser-keeping-a-user-logged-in-for-example-it-remembers-stateful-information-for-the-stateless-http-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      An *HTTP cookie* (web cookie, browser cookie) is a small piece of data that a server sends to a user's web browser. The browser may store the cookie and send it back to the same server with later requests. Typically, an HTTP cookie is used to tell if two requests come from the same browser---keeping a user logged in, for example. It remembers stateful information for the stateless HTTP protocol.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cookies-are-mainly-used-for-three-purposes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cookies are mainly used for three purposes:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cookies are mainly used for three purposes:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#session-management-eg-logins-shopping-carts-game-scores-or-anything-else-the-server-should-remember" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session management, e.g. Logins, shopping carts, game scores, or anything else the server should remember
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#personalization-eg-user-preferences-themes-and-other-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personalization, e.g. User preferences, themes, and other settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tracking-recording-and-analyzing-user-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tracking. Recording and analyzing user behavior
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sessions-are-saved-on-the-server-side-while-cookies-are-saved-on-the-client-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      sessions are saved on the server side while cookies are saved on the client side.
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
+                        <time datetime="2023-12-19 00:00:00" class="md-ellipsis">December 19, 2023</time>
+                      </div>
+                    </li>
+                    
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              4 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+  
+
+<nav class="md-tags" >
+  
+    
+    
+      
+      
+    
+    
+      <span class="md-tag md-tag-icon">django</span>
+    
+  
+    
+    
+      
+      
+    
+    
+      <span class="md-tag md-tag-icon">backend</span>
+    
+  
+    
+    
+      
+      
+    
+    
+      <span class="md-tag md-tag-icon">python</span>
+    
+  
+    
+    
+      
+      
+    
+    
+      <span class="md-tag md-tag-icon">DRF</span>
+    
+  
+</nav>
+
+
+  
+  
+
+
+<h1 id="login-session-and-cookie">Login, session and cookie<a class="headerlink" href="#login-session-and-cookie" title="Permanent link">&para;</a></h1>
+<h2 id="an-http-cookie-web-cookie-browser-cookie-is-a-small-piece-of-data-that-a-server-sends-to-a-users-web-browser-the-browser-may-store-the-cookie-and-send-it-back-to-the-same-server-with-later-requests-typically-an-http-cookie-is-used-to-tell-if-two-requests-come-from-the-same-browser-keeping-a-user-logged-in-for-example-it-remembers-stateful-information-for-the-stateless-http-protocol">An *HTTP cookie* (web cookie, browser cookie) is a small piece of data that a server sends to a user's web browser. The browser may store the cookie and send it back to the same server with later requests. Typically, an HTTP cookie is used to tell if two requests come from the same browser&mdash;keeping a user logged in, for example. It remembers stateful information for the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#http_is_stateless_but_not_sessionless">stateless</a> HTTP protocol.<a class="headerlink" href="#an-http-cookie-web-cookie-browser-cookie-is-a-small-piece-of-data-that-a-server-sends-to-a-users-web-browser-the-browser-may-store-the-cookie-and-send-it-back-to-the-same-server-with-later-requests-typically-an-http-cookie-is-used-to-tell-if-two-requests-come-from-the-same-browser-keeping-a-user-logged-in-for-example-it-remembers-stateful-information-for-the-stateless-http-protocol" title="Permanent link">&para;</a></h2>
+<h2 id="cookies-are-mainly-used-for-three-purposes">Cookies are mainly used for three purposes:<a class="headerlink" href="#cookies-are-mainly-used-for-three-purposes" title="Permanent link">&para;</a></h2>
+<h3 id="session-management-eg-logins-shopping-carts-game-scores-or-anything-else-the-server-should-remember">Session management, e.g. Logins, shopping carts, game scores, or anything else the server should remember<a class="headerlink" href="#session-management-eg-logins-shopping-carts-game-scores-or-anything-else-the-server-should-remember" title="Permanent link">&para;</a></h3>
+<h3 id="personalization-eg-user-preferences-themes-and-other-settings">Personalization, e.g. User preferences, themes, and other settings<a class="headerlink" href="#personalization-eg-user-preferences-themes-and-other-settings" title="Permanent link">&para;</a></h3>
+<h3 id="tracking-recording-and-analyzing-user-behavior">Tracking. Recording and analyzing user behavior<a class="headerlink" href="#tracking-recording-and-analyzing-user-behavior" title="Permanent link">&para;</a></h3>
+<h2 id="sessions-are-saved-on-the-server-side-while-cookies-are-saved-on-the-client-side">sessions are saved on the server side while cookies are saved on the client side.<a class="headerlink" href="#sessions-are-saved-on-the-server-side-while-cookies-are-saved-on-the-client-side" title="Permanent link">&para;</a></h2>
+<h1 id="cross-site-request-forgery-protection">Cross Site Request Forgery protection<a class="headerlink" href="#cross-site-request-forgery-protection" title="Permanent link">&para;</a></h1>
+<h2 id="the-csrf-middleware-and-template-tag-provides-easy-to-use-protection-against-cross-site-request-forgeries-this-type-of-attack-occurs-when-a-malicious-website-contains-a-link-a-form-button-or-some-javascript-that-is-intended-to-perform-some-action-on-your-website-using-the-credentials-of-a-logged-in-user-who-visits-the-malicious-site-in-their-browser">The CSRF middleware and template tag provides easy-to-use protection against <a href="https://www.squarefree.com/securitytips/web-developers.html#CSRF">Cross Site Request Forgeries</a>. This type of attack occurs when a malicious website contains a link, a form button or some JavaScript that is intended to perform some action on your website, using the credentials of a logged-in user who visits the malicious site in their browser.<a class="headerlink" href="#the-csrf-middleware-and-template-tag-provides-easy-to-use-protection-against-cross-site-request-forgeries-this-type-of-attack-occurs-when-a-malicious-website-contains-a-link-a-form-button-or-some-javascript-that-is-intended-to-perform-some-action-on-your-website-using-the-credentials-of-a-logged-in-user-who-visits-the-malicious-site-in-their-browser" title="Permanent link">&para;</a></h2>
+<h2 id="csrf_exemptview"><code>csrf_exempt(view)</code><a class="headerlink" href="#csrf_exemptview" title="Permanent link">&para;</a></h2>
+<h3 id="this-decorator-marks-a-view-as-being-exempt-from-the-protection-ensured-by-the-middleware-example">This decorator marks a view as being exempt from the protection ensured by the middleware. Example:<a class="headerlink" href="#this-decorator-marks-a-view-as-being-exempt-from-the-protection-ensured-by-the-middleware-example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django.views.decorators.csrf</span> <span class="kn">import</span> <span class="n">csrf_exempt</span>
+<span class="nd">@csrf_exempt</span>
+<span class="k">def</span> <span class="nf">my_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 collapsed="true" id="csrf_protectview"><code>csrf_protect(view)</code><a class="headerlink" href="#csrf_protectview" title="Permanent link">&para;</a></h2>
+<h3 id="decorator-that-provides-the-protection-of-csrfviewmiddleware-to-a-view-usages">Decorator that provides the protection of CsrfViewMiddleware to a view. Usages:<a class="headerlink" href="#decorator-that-provides-the-protection-of-csrfviewmiddleware-to-a-view-usages" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>    <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+    <span class="kn">from</span> <span class="nn">django.views.decorators.csrf</span> <span class="kn">import</span> <span class="n">csrf_protect</span>
+    <span class="nd">@csrf_protect</span>
+    <span class="k">def</span> <span class="nf">my_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;a_template.html&quot;</span><span class="p">,</span> <span class="p">{})</span>
+</code></pre></div>
+<h2 id="requires_csrf_tokenview"><code>requires_csrf_token(view)</code><a class="headerlink" href="#requires_csrf_tokenview" title="Permanent link">&para;</a></h2>
+<h3 id="normally-the-csrftoken-template-tag-will-not-work-if-csrfviewmiddlewareprocessview-or-an-equivalent-like-csrfprotect-has-not-run-the-view-decorator-requirescsrftoken-can-be-used-to-ensure-the-template-tag-does-work">Normally the <a href="https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#std-templatetag-csrf_token">csrf<sub>token</sub></a> template tag will not work if CsrfViewMiddleware.process<sub>view</sub> or an equivalent like csrf<sub>protect</sub> has not run. The view decorator ~requires<sub>csrftoken</sub>~ can be used to ensure the template tag does work.<a class="headerlink" href="#normally-the-csrftoken-template-tag-will-not-work-if-csrfviewmiddlewareprocessview-or-an-equivalent-like-csrfprotect-has-not-run-the-view-decorator-requirescsrftoken-can-be-used-to-ensure-the-template-tag-does-work" title="Permanent link">&para;</a></h3>
+<h1 id="session">Session<a class="headerlink" href="#session" title="Permanent link">&para;</a></h1>
+<h2 id="django-session"><a href="../assets/Django-Session_1696546798398_0.jpg">django session</a><a class="headerlink" href="#django-session" title="Permanent link">&para;</a></h2>
+<h2 id="session_1"><a href="../assets/django_login_auth.png">session</a><a class="headerlink" href="#session_1" title="Permanent link">&para;</a></h2>
+<h2 id="default-session-setup">Default session setup<a class="headerlink" href="#default-session-setup" title="Permanent link">&para;</a></h2>
+<h3 id="settingpy">setting.py<a class="headerlink" href="#settingpy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>    <span class="n">SESSION_ENGINE</span> <span class="o">=</span> <span class="s1">&#39;django.contrib.sessions.backends.db&#39;</span> <span class="c1"># 引擎（默认）</span>
+    <span class="c1"># use &#39;django.contrib.sessions.backends.cached_db&#39; for high traffic</span>
+    <span class="n">SESSION_COOKIE_NAME</span> <span class="err">＝</span> <span class="s2">&quot;sessionid&quot;</span> <span class="c1"># Session的cookie保存在浏览器上时的key，即：sessionid＝随机字符串（默认）</span>
+    <span class="n">SESSION_COOKIE_PATH</span> <span class="err">＝</span> <span class="s2">&quot;/&quot;</span> <span class="c1"># Session的cookie保存的路径（默认）</span>
+    <span class="n">SESSION_COOKIE_DOMAIN</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Session的cookie保存的域名（默认）</span>
+    <span class="n">SESSION_COOKIE_SECURE</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># 是否Https传输cookie（默认）</span>
+    <span class="n">SESSION_COOKIE_HTTPONLY</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># 是否Session的cookie只支持http传输（默认）</span>
+    <span class="n">SESSION_COOKIE_AGE</span> <span class="o">=</span> <span class="mi">1209600</span> <span class="c1"># Session的cookie失效日期（2周）（默认）</span>
+    <span class="n">SESSION_EXPIRE_AT_BROWSER_CLOSE</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># 是否关闭浏览器使得Session过期（默认）</span>
+    <span class="n">SESSION_SAVE_EVERY_REQUEST</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># 是否每次请求都保存Session，默认修改之后才保存（默认）</span>
+</code></pre></div>
+<h2 id="cookie">Cookie<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="n">request</span><span class="p">.</span><span class="n">COOKIES</span><span class="o">[</span><span class="n">key</span><span class="o">]</span>
+<span class="n">request</span><span class="p">.</span><span class="n">COOKIES</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="k">key</span><span class="p">)</span>
+<span class="err">#</span><span class="w"> </span><span class="n">普通cookie是明文传输的</span><span class="err">，</span><span class="n">可以直接在客户端直接打开</span><span class="err">，</span><span class="n">所以需要加盐</span><span class="err">，</span><span class="n">解盐之后才能查看</span>
+<span class="n">request</span><span class="p">.</span><span class="n">get_signed_cookie</span><span class="p">(</span><span class="k">key</span><span class="p">,</span><span class="w"> </span><span class="k">default</span><span class="o">=</span><span class="n">RAISE_ERROR</span><span class="p">,</span><span class="w"> </span><span class="n">salt</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">max_age</span><span class="o">=</span><span class="k">None</span><span class="p">)</span>
+</code></pre></div>
+
+<h1 id="login-html">Login HTML<a class="headerlink" href="#login-html" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="o">%</span> <span class="n">raw</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;account&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">用户登录</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;panel-body&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">form</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span> <span class="n">novalidate</span><span class="o">&gt;</span>
+            <span class="p">{</span><span class="o">%</span> <span class="n">csrf_token</span> <span class="o">%</span><span class="p">}</span>
+            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;form-group&quot;</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="n">用户名</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
+                <span class="p">{{</span> <span class="n">form</span><span class="o">.</span><span class="n">username</span> <span class="p">}}</span>
+                <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;color: red;&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">form</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">username</span><span class="mf">.0</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+            <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;form-group&quot;</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="n">密码</span><span class="o">&lt;/</span><span class="n">label</span><span class="o">&gt;</span>
+                <span class="p">{{</span> <span class="n">form</span><span class="o">.</span><span class="n">password</span> <span class="p">}}</span>
+                <span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;color: red;&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">form</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">password</span><span class="mf">.0</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
+            <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+
+            <span class="o">&lt;</span><span class="n">button</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;btn btn-primary center-block&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;width: 80px;&quot;</span><span class="o">&gt;</span><span class="n">登录</span><span class="o">&lt;/</span><span class="n">button</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">form</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endraw</span> <span class="o">%</span><span class="p">}</span>
+</code></pre></div>
+<h1 id="login-form">Login Form<a class="headerlink" href="#login-form" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">employee_management.utils.modelform</span> <span class="kn">import</span> <span class="n">BootStrapForm</span>
+<span class="kn">from</span> <span class="nn">employee_management.utils.encrypt</span> <span class="kn">import</span> <span class="n">md5</span>
+<span class="kn">from</span> <span class="nn">employee_management.models</span> <span class="kn">import</span> <span class="n">Admin</span>
+
+<span class="c1"># 使用Form来实现</span>
+<span class="k">class</span> <span class="nc">LoginForm</span><span class="p">(</span><span class="n">BootStrapForm</span><span class="p">):</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;用户名&quot;</span><span class="p">,</span>
+        <span class="n">widget</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;form-control&quot;</span><span class="p">}),</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;用户名&quot;</span><span class="p">,</span>
+        <span class="c1"># render_value=True 表示当提交后,如果密码输入错误,不会自动清空密码输入框的内容</span>
+        <span class="n">widget</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">PasswordInput</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;form-control&quot;</span><span class="p">},</span> <span class="p">),</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">clean_password</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">pwd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;password&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">md5</span><span class="p">(</span><span class="n">pwd</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;登录&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;GET&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">LoginForm</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;form&quot;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
+
+    <span class="n">form</span> <span class="o">=</span> <span class="n">LoginForm</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+        <span class="c1"># 验证成功, 获取到的用户名和密码</span>
+        <span class="c1"># print(form.cleaned_data)</span>
+        <span class="c1"># {&#39;username&#39;: &#39;123&#39;, &#39;password&#39;: &#39;123&#39;}</span>
+        <span class="c1"># {&#39;username&#39;: &#39;456&#39;, &#39;password&#39;: &#39;0f54af32f41a5ba8ef3a2d40cd6ccf25&#39;}</span>
+
+        <span class="c1"># 去数据库校验用户名和密码是否正确</span>
+        <span class="n">admin_object</span> <span class="o">=</span> <span class="n">Admin</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">admin_object</span><span class="p">:</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">add_error</span><span class="p">(</span><span class="s2">&quot;password&quot;</span><span class="p">,</span> <span class="s2">&quot;用户名或密码错误&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;form&quot;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
+
+        <span class="c1"># 如果用户名密码正确</span>
+        <span class="c1"># 网站生成随机字符创,写到用户浏览器的cookie中,再写入到服务器的session中</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s2">&quot;info&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="n">admin_object</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">admin_object</span><span class="o">.</span><span class="n">username</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/admin/list/&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;login.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;form&quot;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
+</code></pre></div>
+<h1 collapsed="true" id="session-storage">Session storage<a class="headerlink" href="#session-storage" title="Permanent link">&para;</a></h1>
+<h2 id="the-request-object-has-a-session-attribute-and-when-the-server-executes-the-code-the-session-middleware-and-the-sessions-application-operate-together-seamlessly-when-you-first-store-data-in-a-session-django-saves-the-data-server-side-and-associates-it-with-a-unique-session-id-the-server-side-session-data-object-is-created-when-you-store-any-data-in-the-session-and-is-saved-either-at-the-end-of-the-request-or-when-you-explicitly-call-the-sessionid-cookie-is-created-client-side-when-you-first-store-any-data-in-the-session">The request object has a session attribute, and when the server executes the code, the session middleware and the session&rsquo;s application operate together seamlessly. When you first store data in a session, Django saves the data server-side and associates it with a unique session ID. The server-side session data (object) is created when you store any data in the session and is saved either at the end of the request or when you explicitly call. The <code>sessionid</code> cookie is created client-side when you first store any data in the session.<a class="headerlink" href="#the-request-object-has-a-session-attribute-and-when-the-server-executes-the-code-the-session-middleware-and-the-sessions-application-operate-together-seamlessly-when-you-first-store-data-in-a-session-django-saves-the-data-server-side-and-associates-it-with-a-unique-session-id-the-server-side-session-data-object-is-created-when-you-store-any-data-in-the-session-and-is-saved-either-at-the-end-of-the-request-or-when-you-explicitly-call-the-sessionid-cookie-is-created-client-side-when-you-first-store-any-data-in-the-session" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">django_session</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">----------------------------------+-------------------------------------------------------------------------------------------------+----------------------------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">session_key</span><span class="w">                      </span><span class="o">|</span><span class="w"> </span><span class="n">session_data</span><span class="w">                                                                                    </span><span class="o">|</span><span class="w"> </span><span class="n">expire_date</span><span class="w">                </span><span class="o">|</span>
+<span class="o">+</span><span class="c1">----------------------------------+-------------------------------------------------------------------------------------------------+----------------------------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">zkgq26t7hqx3yu6xo04bws856002n5aj</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">eyJpbmZvIjp7ImlkIjoxMiwibmFtZSI6InRva2VyIn19</span><span class="p">:</span><span class="mi">1</span><span class="n">pElim</span><span class="p">:</span><span class="n">Tus2mHaJUTNTfzhppuah8N0FVdLXQxyvRk_4n</span><span class="o">-</span><span class="mi">4</span><span class="n">fP6g</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2023</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="mi">06</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">24</span><span class="p">.</span><span class="mi">373104</span><span class="w"> </span><span class="o">|</span>
+<span class="o">+</span><span class="c1">----------------------------------+-------------------------------------------------------------------------------------------------+----------------------------+</span>
+<span class="o">```</span><span class="w"> </span><span class="k">sql</span>
+
+<span class="n">mysql</span><span class="err">\</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="err">\</span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">django</span><span class="o">~</span><span class="k">session</span><span class="o">~</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">---------------------------------- -------------------------------------------------------------------------------------------------- -----------------</span>
+<span class="w">  </span><span class="k">session</span><span class="o">~</span><span class="k">key</span><span class="o">~</span><span class="w">                       </span><span class="k">session</span><span class="o">~</span><span class="k">data</span><span class="o">~</span><span class="w">                                                                                      </span><span class="n">expire</span><span class="o">~</span><span class="nb">date</span><span class="o">~</span>
+
+<span class="w">  </span><span class="n">zkgq26t7hqx3yu6xo04bws856002n5aj</span><span class="w">   </span><span class="n">eyJpbmZvIjp7ImlkIjoxMiwibmFtZSI6InRva2VyIn19</span><span class="p">:</span><span class="mi">1</span><span class="n">pElim</span><span class="p">:</span><span class="n">Tus2mHaJUTNTfzhppuah8N0FVdLXQxyvRk</span><span class="o">~</span><span class="mi">4</span><span class="n">n</span><span class="o">~-</span><span class="mi">4</span><span class="n">fP6g</span><span class="w">   </span><span class="mi">2023</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">23</span>
+<span class="w">                                                                                                                                        </span><span class="mi">06</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">24</span><span class="p">.</span><span class="mi">373104</span>
+<span class="w">  </span><span class="c1">---------------------------------- -------------------------------------------------------------------------------------------------- -----------------</span>
+</code></pre></div>
+<h1 id="django-middleware">Django Middleware<a class="headerlink" href="#django-middleware" title="Permanent link">&para;</a></h1>
+<h2 id="class-with-process_request-input-middleware">Class with <code>process_request</code> Input middleware<a class="headerlink" href="#class-with-process_request-input-middleware" title="Permanent link">&para;</a></h2>
+<h3 id="if-processrequest-return-anything-the-request-will-not-forward-to-viewpy-it-will-return-the-result">if process<sub>request</sub> return anything, the request will not forward to view.py, it will return the result<a class="headerlink" href="#if-processrequest-return-anything-the-request-will-not-forward-to-viewpy-it-will-return-the-result" title="Permanent link">&para;</a></h3>
+<h3 id="if-nothing-return-continue-with-next-middleware-and-then-go-to-view">if nothing return, continue with next middleware and then go to view<a class="headerlink" href="#if-nothing-return-continue-with-next-middleware-and-then-go-to-view" title="Permanent link">&para;</a></h3>
+<h2 id="proccess_responseself-request-response-output-middleware"><code>proccess_response(self, request, response)</code> output middleware<a class="headerlink" href="#proccess_responseself-request-response-output-middleware" title="Permanent link">&para;</a></h2>
+<h1 id="auth-middleware">Auth middleware<a class="headerlink" href="#auth-middleware" title="Permanent link">&para;</a></h1>
+<h2 id="middlewareauthpy">middleware/auth.py<a class="headerlink" href="#middlewareauthpy" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">django.utils.deprecation</span> <span class="kn">import</span> <span class="n">MiddlewareMixin</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">redirect</span>
+
+
+<span class="k">class</span> <span class="nc">AuthMiddleware</span><span class="p">(</span><span class="n">MiddlewareMixin</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">process_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+
+        <span class="c1"># 0.排除不需要的页面 否则容易死循环【【【</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">path_info</span> <span class="o">==</span> <span class="s2">&quot;/login/&quot;</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c1"># 1.读取当前访问的用户的session信息,如果能读到,说明已登录过,就可以继续向后走</span>
+        <span class="n">info_dict</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;info&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">info_dict</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c1"># 2.如果没有登录信息</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/login/&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="settingpy_1">setting.py<a class="headerlink" href="#settingpy_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.middleware.security.SecurityMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions.middleware.SessionMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.middleware.common.CommonMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.middleware.csrf.CsrfViewMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages.middleware.MessageMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;employee_management.middleware.auth.AuthMiddleware&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</code></pre></div>
+<h2 id="logout">logout<a class="headerlink" href="#logout" title="Permanent link">&para;</a></h2>
+<h3 id="clean-session-data">clean session data<a class="headerlink" href="#clean-session-data" title="Permanent link">&para;</a></h3>
+<h3 id="viewpy">view.py<a class="headerlink" href="#viewpy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">logout</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; 注销 &quot;&quot;&quot;</span>
+    <span class="c1"># clean session</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/login/&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2019 - 2024 RayX
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ray-x" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/x_II_x" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9L389.2 48zm-24.8 373.8h39.1L151.1 88h-42l255.3 333.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/ray-x" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": [], "search": "../../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "tags": {"CSS": "css", "HTML": "html", "JavaScript": "js"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

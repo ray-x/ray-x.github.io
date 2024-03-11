@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block extrahead %}
+  <link rel="stylesheet" href="{{ 'stylesheets/custom.00c04c01.min.css' | url }}">
+  <link rel="stylesheet" href="{{ 'stylesheets/main.css' | url }}">
+{% endblock %}
+{% block announce %}
+  Build something fun with <strong>@ray-x</strong> on
+  <a href="https://twitter.com/x_II_x">
+    <span class="twemoji twitter">
+      {% include ".icons/fontawesome/brands/twitter.svg" %}
+    </span>
+    <strong>Twitter</strong>
+  </a>
+{% endblock %}
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ 'javascripts/custom.129bd6ad.min.js' | url }}"></script>
+{% endblock %}
